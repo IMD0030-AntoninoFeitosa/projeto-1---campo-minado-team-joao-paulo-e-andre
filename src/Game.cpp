@@ -131,9 +131,21 @@ bool play(Difficulty level){
   std::cout << "\nWelcome to minesweeper!" << std::endl;  
   
   Game game = start_game(level);
+
   show_map(game.map);  
 
-  return true;
+  bool end = false;
+  bool hasFailed = false;
+
+  while(end == false) {
+    //obter input de usuario
+    //mover para celular
+    //revelar celula
+    //dizer se perdeu  
+    end = true;
+  }
+
+  return hasFailed;
 }
 
 //grava dificuldade (nivel) em arquivo de configuracao
@@ -225,5 +237,5 @@ void end_game(bool hasFailed, int seconds){
     return;
   }
   
-  std::cout << "Congrats! You finished the level in " << seconds << " seconds!"<< std::endl;
+  std::cout << "Congrats! You finished the game in " << seconds << " seconds!"<< std::endl;
 }
