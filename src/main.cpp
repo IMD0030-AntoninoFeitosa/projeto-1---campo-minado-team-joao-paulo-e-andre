@@ -11,9 +11,9 @@ int main(int argc, char** argv){
     
     std::chrono::_V2::system_clock::time_point begin = std::chrono::high_resolution_clock::now();
     
-    bool gameResults = start_game(level);
+    bool result = start_game(level);
 
-    end_game(gameResults, calc_duration(begin));
+    end_game(result, calc_duration(begin));
   }
   return 0;
 }
