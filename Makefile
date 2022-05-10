@@ -1,7 +1,7 @@
 app: msg dist game main
 
 msg: 
-	@echo Ola, estamos preparando as coisas para voce...
+	@echo Hello, we're getting things ready for ya...
 
 dist: 
 	mkdir dist
