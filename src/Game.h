@@ -8,22 +8,29 @@ const std::string CONFIG_FILE = "./dist/config.txt";
 
 enum class Difficulty { beginner, intermediary, advanced };
 
-struct Cell {
-  bool is_hidden {true};
-  bool has_bomb {false};
-  bool has_flag {false};
-  short qtd_bombs;
-};
-
-using Map = std::vector<std::vector<Cell>>;
-
 struct Point{
   short x, y;
 };
 
-struct Game{
-  short total_bombs;
-  Point dimensions;
+struct Cell {
+  bool is_hidden {true};
+  bool has_bomb {false};
+  bool has_flag {false};
+  short total_mines;
+};
+
+using Cells = std::vector<std::vector<Cell>>;
+
+struct Map {
+  int height; //altura do mapa
+  int width; //largura do mapa
+  Cells cells; //pontos de que o mapa é composto
+};
+ 
+struct Game {
+  short total_mines;
+  Difficulty level;
+  Map map;
 };
 
 //reacts to user's inputs such as --difficulty flags etc

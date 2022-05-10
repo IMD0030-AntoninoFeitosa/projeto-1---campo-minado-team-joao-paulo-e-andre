@@ -22,9 +22,97 @@ void show_usage(){
   std::cout << "                               -a or --advanced" << std::endl;
 }
 
+void show_map(Map map){
+  std::cout << std::endl;
+  
+  for (int i = 0; i < map.height; i++){
+    std::cout << std::setfill('0') << std::setw(2) << i << "   ";
+    for (int j = 0; j < map.width; j++){
+      if (map.cells[i][j].is_hidden == true){
+        std::cout << ".";
+      }
+      else {
+        if(map.cells[i][j].has_flag == true){
+          std::cout << "F";
+        }
+        else if(map.cells[i][j].has_bomb == true){
+          std::cout << "B";
+        }
+        else{
+          std::cout << map.cells[i][j].total_mines;
+        }
+      }
+      std::cout << "  ";
+    }
+    std::cout << std::endl;
+  }
+
+  std::cout << std::endl << "    ";
+
+  for (int i = 0; i < map.height; i++){
+    std::cout << std::setfill('0') << std::setw(2) << i << " ";
+  }
+
+  std::cout << std::endl;
+  
+  std::cout << std::endl;
+}
+
+
+Map create_map(int height, int width, int total_mines) {
+  Map map;  
+  map.height = height;
+  map.width = width;
+
+  Cell cell;  
+
+  for (int i = 0; i < map.height; i++){
+    std::vector<Cell> cells;
+
+    for (int j = 0; j < map.width; j++){
+      cells.push_back(cell);
+    }
+
+    map.cells.push_back(cells);
+  }
+ 
+  std::cout << "Mapa inicializado! " << std::endl;
+
+  return map;
+}
+
+Game start_game(Difficulty level) {
+  Game game;
+
+  int height = 10;
+  int width = 10;  
+  int total_mines = 10;
+
+  if(level == Difficulty::intermediary){
+      height = 15;
+      width = 15;
+      total_mines = 40; 
+  }
+
+ if(level == Difficulty::advanced){
+     height = 30;
+     width = 15;
+     total_mines = 100;
+  }
+
+  game.map = create_map(height, width, total_mines);
+  game.level = level;
+  game.total_mines = total_mines;
+
+  return game;
+}
+
 //metodo principal para realizar logica da partida
 bool play(Difficulty level){
-  std::cout << "Welcome to minesweeper!" << std::endl;
+  std::cout << "Welcome to minesweeper!" << std::endl;  
+  
+  Game game = start_game(level);
+  show_map(game.map);  
 
   return true;
 }
