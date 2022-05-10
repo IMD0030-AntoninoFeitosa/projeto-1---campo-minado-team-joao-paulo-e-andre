@@ -21,7 +21,7 @@ void show_usage(){
   std::cout << "                               -a or --advanced" << std::endl;
 }
 
-bool start_game(Difficulty level){
+bool play(Difficulty level){
   std::cout << "Welcome to minesweeper!" << std::endl;
   return true;
 }

@@ -33,7 +33,7 @@ void prompt(int argc, char** argv);
 Difficulty load_difficulty(const std::string config_file);
 
 //start the game bases on current level
-bool start_game(Difficulty level);
+bool play(Difficulty level);
 
 //end the game and stores player information to the ranking if they win.
 void end_game(bool hasFailed, int seconds);
