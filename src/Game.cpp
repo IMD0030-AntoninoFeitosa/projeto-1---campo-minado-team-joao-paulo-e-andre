@@ -59,6 +59,24 @@ void show_map(Map map){
   std::cout << std::endl;
 }
 
+//preenche as minas do mapa a depender do total estabelecido pelo nivel do jogo
+void fill_with_mines(Map &map, int total_mines) {
+  int count_mines = 0;
+  
+  while(count_mines < total_mines){
+    int random = rand() % (map.height * map.width);
+
+    int h = random / map.height;
+    
+    int w = random % map.width;
+
+    if (map.cells[h][w].has_bomb == false){
+        map.cells[h][w].has_bomb = true;
+        count_mines++;
+    }
+  }
+}
+
 //cria mapa do jogo
 Map create_map(int height, int width, int total_mines) {
   Map map;  
@@ -76,6 +94,8 @@ Map create_map(int height, int width, int total_mines) {
 
     map.cells.push_back(cells);
   }
+
+  fill_with_mines(map, total_mines);
 
   return map;
 }
