@@ -22,6 +22,7 @@ void show_usage(){
   std::cout << "                               -a or --advanced" << std::endl;
 }
 
+//exibe mapa do jogo em terminal
 void show_map(Map map){
   std::cout << std::endl;
   
@@ -54,11 +55,11 @@ void show_map(Map map){
   }
 
   std::cout << std::endl;
-  
+
   std::cout << std::endl;
 }
 
-
+//cria mapa do jogo
 Map create_map(int height, int width, int total_mines) {
   Map map;  
   map.height = height;
@@ -75,8 +76,6 @@ Map create_map(int height, int width, int total_mines) {
 
     map.cells.push_back(cells);
   }
- 
-  std::cout << "Mapa inicializado! " << std::endl;
 
   return map;
 }
@@ -109,7 +108,7 @@ Game start_game(Difficulty level) {
 
 //metodo principal para realizar logica da partida
 bool play(Difficulty level){
-  std::cout << "Welcome to minesweeper!" << std::endl;  
+  std::cout << "\nWelcome to minesweeper!" << std::endl;  
   
   Game game = start_game(level);
   show_map(game.map);  
