@@ -11,6 +11,7 @@
 #include "./utils/strings.cpp"
 #include "Game.h"
 
+//explica como usar comandos do jogo
 void show_usage(){
   std::cout << "Usage: game [option]" << std::endl;
   std::cout << "Option:" << std::endl;
@@ -21,11 +22,14 @@ void show_usage(){
   std::cout << "                               -a or --advanced" << std::endl;
 }
 
+//metodo principal para realizar logica da partida
 bool play(Difficulty level){
   std::cout << "Welcome to minesweeper!" << std::endl;
+
   return true;
 }
 
+//grava dificuldade (nivel) em arquivo de configuracao
 void log_difficulty(const std::string config_file, Difficulty level){
   std::ofstream file;
   file.open (config_file.c_str(), std::ifstream::out);
@@ -48,6 +52,7 @@ void log_difficulty(const std::string config_file, Difficulty level){
   }
 }
 
+//carrega a dificuldade (nivel) atual
 Difficulty load_difficulty(const std::string config_file){
   Difficulty level;
   std::ifstream file;
@@ -68,6 +73,7 @@ Difficulty load_difficulty(const std::string config_file){
   return level;
 }
 
+//reage a acoes do usuario via terminal. Prompt do jogo
 void prompt(int argc, char** argv) {
     std::string arg = argv[1];
     
@@ -103,6 +109,7 @@ void prompt(int argc, char** argv) {
     }
 }
 
+//finaliza a partida
 void end_game(bool hasFailed, int seconds){
   std::string name;
   
