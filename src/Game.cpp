@@ -126,26 +126,38 @@ Game start_game(Difficulty level) {
   return game;
 }
 
+//setar posicao do jogador
+void set_player_position(Player& player) {
+    short x, y;
+
+    std::cin >> y >> x;
+
+    player.position.x = x;
+    player.position.y = y;
+}
+
 //metodo principal para realizar logica da partida
 bool play(Difficulty level){
   std::cout << "\nWelcome to minesweeper!" << std::endl;  
   
   Game game = start_game(level);
-
   show_map(game.map);  
 
   bool end = false;
-  bool hasFailed = false;
+  bool won = false;
+
+  Player player; 
+
+  set_player_position(player);  
 
   while(end == false) {
-    //obter input de usuario
     //mover para celular
     //revelar celula
     //dizer se perdeu  
     end = true;
   }
 
-  return hasFailed;
+  return won;
 }
 
 //grava dificuldade (nivel) em arquivo de configuracao
@@ -229,10 +241,10 @@ void prompt(int argc, char** argv) {
 }
 
 //finaliza a partida
-void end_game(bool hasFailed, int seconds){
+void end_game(bool won, int seconds){
   std::string name;
   
-  if (hasFailed){
+  if (won == false){
     std::cout << "Game Over!!!" << std::endl;
     return;
   }

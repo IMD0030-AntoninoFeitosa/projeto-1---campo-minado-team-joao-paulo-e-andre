@@ -8,7 +8,7 @@ const std::string CONFIG_FILE = "./dist/config.txt";
 
 enum class Difficulty { beginner, intermediary, advanced };
 
-struct Point{
+struct Position{
   short x, y;
 };
 
@@ -26,7 +26,11 @@ struct Map {
   int width; //largura do mapa
   Cells cells; //pontos de que o mapa é composto
 };
- 
+
+struct Player {
+  Position position;
+};
+
 struct Game {
   short total_mines;
   Difficulty level;
@@ -43,6 +47,6 @@ Difficulty load_difficulty(const std::string config_file);
 bool play(Difficulty level);
 
 //end the game and stores player information to the ranking if they win.
-void end_game(bool hasFailed, int seconds);
+void end_game(bool won, int seconds);
 
 #endif
