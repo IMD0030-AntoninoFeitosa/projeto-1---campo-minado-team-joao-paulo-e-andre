@@ -173,8 +173,14 @@ Game start_game(Difficulty level) {
   return game;
 }
 
+//checa se e acao de revelar
 bool isRevealAction(char action) {
     return action == 'r';
+}
+
+//checa se e acao de colocar bandeira
+bool isFlagAction(char action) {
+    return action == 'f';
 }
 
 //metodo principal para realizar logica da partida
@@ -216,6 +222,12 @@ bool play(Difficulty level){
             end = true;
         }
    }
+   else if(isFlagAction(action)) {
+    std::cout << "You pressed f" << std::endl;
+   }
+   else {
+    std::cout << "Oops..Invalid action!" << std::endl;       
+   } 
   }
 
   return won;
