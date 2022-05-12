@@ -236,16 +236,16 @@ bool play(Difficulty level){
        std::cin >> y;
      
        //*** marca/descamarca com bandeira ***
-		 	 if(action == 'f'){
-				 if(game.map.cells[y][x].is_hidden == true && game.map.cells[y][x].has_flag == false){
-					 game.map.cells[y][x].is_hidden = false;
-					 game.map.cells[y][x].has_flag = true;
-				 }
-				 else if(game.map.cells[y][x].is_hidden == false && game.map.cells[y][x].has_flag == true){
-					 game.map.cells[y][x].is_hidden = true;
-					 game.map.cells[y][x].has_flag = false;
-				 }
-	 		 }
+       if(action == 'f'){
+           if(game.map.cells[y][x].is_hidden == true && game.map.cells[y][x].has_flag == false){
+               game.map.cells[y][x].is_hidden = false;
+               game.map.cells[y][x].has_flag = true;
+           }
+           else if(game.map.cells[y][x].is_hidden == false && game.map.cells[y][x].has_flag == true){
+               game.map.cells[y][x].is_hidden = true;
+               game.map.cells[y][x].has_flag = false;
+           }
+       }
 
        //checar se posicao e valida. Enquanto nao for, pedir coordenadas
        while(!is_inside_map(game.map, x, y)) {
