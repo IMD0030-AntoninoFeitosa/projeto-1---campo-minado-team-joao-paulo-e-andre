@@ -30,7 +30,7 @@ void show_map(Map map){
     for (int j = 0; j < map.width; j++){
       //celula oculta  
       if (map.cells[i][j].is_hidden == true){
-        std::cout << ".";
+        std::cout << "X";
       }
       else {
         //com bandeira (f)
@@ -42,7 +42,11 @@ void show_map(Map map){
           std::cout << "M";
         }
         else{
-          std::cout << map.cells[i][j].total_mines;  
+          if(map.cells[i][j].total_mines > 0) {
+              std::cout << map.cells[i][j].total_mines;  
+          } else {
+              std::cout << " ";
+          }
         }
       }
       std::cout << "  ";
