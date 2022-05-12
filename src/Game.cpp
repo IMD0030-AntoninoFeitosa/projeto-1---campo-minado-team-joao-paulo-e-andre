@@ -117,7 +117,7 @@ int count_nested_mines(Map map, int px, int py) {
 void fill_with_count_nested_mines(Map &map) {
     for (int h = 0; h < map.height; h++){
         for (int w = 0; w < map.width; w++){
-           map.cells[h][w].total_mines = count_nested_mines(map, h, w);           
+           map.cells[h][w].total_mines = count_nested_mines(map, w, h);           
         }
     }
 }
