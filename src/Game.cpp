@@ -37,7 +37,7 @@ void show_map(Map map){
           std::cout << "F";
         }
         else if(map.cells[i][j].has_mine == true){
-          std::cout << "B";
+          std::cout << "M";
         }
         else{
           std::cout << map.cells[i][j].total_mines;
