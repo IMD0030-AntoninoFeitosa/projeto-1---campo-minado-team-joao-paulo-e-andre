@@ -77,6 +77,42 @@ void fill_with_mines(Map &map, int total_mines) {
   }
 }
 
+//checa se ponto esta dentro do mapa
+bool is_inside_map(Map map, int h, int w) {
+    return (h >= 0 && h < map.height) && (w >= 0 && w < map.width);
+}
+
+//checa se ha bomba em um ponto do mapa
+bool has_bomb(Map map, int h, int w) {
+    return map.cells[h][w].has_bomb;
+}
+
+//conta quantidade de minas ao redor de um ponto
+int count_nested_mines(Map map, int px, int py) {
+  int count = 0;
+  
+  for (int y = -1; y <= 1; y++) {
+    for (int x = -1; x <= 1; x++) {
+      int dx = px + x;
+      int dy = py + y;
+      if (is_inside_map(map, dx, dy) && has_bomb(map, dx, dy)) {
+        count++;
+      }
+    }
+  }
+
+  return count;
+}
+
+//preenche quantidade de minas ao redor de cada celula do mapa inteiro
+void fill_with_count_nested_mines(Map &map) {
+    for (int h = 0; h < map.height; h++){
+        for (int w = 0; w < map.width; w++){
+           map.cells[h][w].total_mines = count_nested_mines(map, h, w);           
+        }
+    }
+}
+
 //cria mapa do jogo
 Map create_map(int height, int width, int total_mines) {
   Map map;  
@@ -96,6 +132,8 @@ Map create_map(int height, int width, int total_mines) {
   }
 
   fill_with_mines(map, total_mines);
+  
+  fill_with_count_nested_mines(map);
 
   return map;
 }
@@ -132,18 +170,6 @@ Game start_game(Difficulty level) {
   game.player = start_player_at_first_position();
 
   return game;
-}
-
-void clear_neighbor(Map &map, int px, int py) {
-  for (int y = -1; y <= 1; y++) {
-    for (int x = -1; x <= 1; x++) {
-      int dx = px + x;
-      int dy = py + y;
-      if (dx >= 0 && dx < map.width && dy >= 0 && dy < map.height) {
-        map.cells[dy][dx].is_hidden = false;
-      }
-    }
-  }
 }
 
 //metodo principal para realizar logica da partida
