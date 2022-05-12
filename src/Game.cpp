@@ -8,7 +8,6 @@
 #include <iomanip>
 #include <sstream>
 
-#include "./utils/strings.cpp"
 #include "Game.h"
 
 //explica como usar comandos do jogo

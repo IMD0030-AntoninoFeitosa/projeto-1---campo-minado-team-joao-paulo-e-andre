@@ -7,7 +7,6 @@ dist:
 	mkdir dist
 
 game:
-	g++ -c src/utils/strings.cpp -o dist/strings.o
 	g++ -c src/utils/time.cpp -o dist/time.o
 	g++ -c src/Game.cpp -o dist/Game.o
 	g++ -c src/main.cpp -o dist/main.o
