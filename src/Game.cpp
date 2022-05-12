@@ -220,8 +220,11 @@ bool play(Difficulty level){
 
        //checar se existe bomba, se sim, finaliza jogo com derrota
        if(has_mine(game.map, x, y)) {
+            game.map.cells[y][x].is_hidden = false;
+            game.map.cells[y][x].has_mine = true;
+            show_map(game.map); 
             end = true;
-            break;
+            won = false;
        }
 
        //caso nao seja encontrada uma bomba, e exibida celula
