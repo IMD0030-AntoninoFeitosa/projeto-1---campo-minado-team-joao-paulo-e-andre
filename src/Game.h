@@ -9,7 +9,7 @@ const std::string CONFIG_FILE = "./dist/config.txt";
 enum class Difficulty { beginner, intermediary, advanced };
 
 struct Cell {
-  bool is_hidden {false};
+  bool is_hidden {true};
   bool has_mine {false};
   bool has_flag {false};
   short total_mines;

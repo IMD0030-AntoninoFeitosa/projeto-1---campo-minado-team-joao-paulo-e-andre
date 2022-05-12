@@ -194,14 +194,15 @@ bool play(Difficulty level){
   int x, y = 0;
 
   Game game = start_game(level); 
-  show_map(game.map);  
 
   while(end == false) {  
+   show_map(game.map);     
+
    std::cout << std::endl; 
    std::cout << "Type your action [r/f]: ";   
    std::cin >> action;
 
-   if(isRevealAction(action)) {
+   if(isRevealAction(action) || isFlagAction(action)) {
        //ler coordenadas 
        std::cout << "Type coord x: ";
        std::cin >> x;
@@ -222,9 +223,9 @@ bool play(Difficulty level){
             end = true;
             break;
        }
-       std::cout << "teste";
-   }
-   else if(isFlagAction(action)) {
+
+       //caso nao seja encontrada uma bomba, e exibida celula
+       game.map.cells[y][x].is_hidden = false;
    }
    else {
     std::cout << "Oops..Invalid action!" << std::endl;       
