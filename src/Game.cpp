@@ -29,18 +29,21 @@ void show_map(Map map){
   for (int i = 0; i < map.height; i++){
     std::cout << std::setfill('0') << std::setw(2) << i << "   ";
     for (int j = 0; j < map.width; j++){
+      //celula oculta  
       if (map.cells[i][j].is_hidden == true){
         std::cout << ".";
       }
       else {
+        //com bandeira (f)
         if(map.cells[i][j].has_flag == true){
           std::cout << "F";
         }
+        //com minas (m)
         else if(map.cells[i][j].has_mine == true){
           std::cout << "M";
         }
         else{
-          std::cout << map.cells[i][j].total_mines;
+          std::cout << map.cells[i][j].total_mines;  
         }
       }
       std::cout << "  ";
@@ -50,9 +53,16 @@ void show_map(Map map){
 
   std::cout << std::endl << "    ";
 
-  for (int i = 0; i < map.height; i++){
+  for (int i = 0; i < map.width; i++){
     std::cout << std::setfill('0') << std::setw(2) << i << " ";
   }  
+
+  //linha divisoria do mapa
+  std::cout << std::endl;
+  std::cout << std::endl << "    ";
+  for (int i = 0; i < map.width; i++){
+    std::cout << "---";
+  }
 
   std::cout << std::endl;
 }
@@ -78,12 +88,12 @@ void fill_with_mines(Map &map, int total_mines) {
 }
 
 //checa se ponto esta dentro do mapa
-bool is_inside_map(Map map, int h, int w) {
+bool is_inside_map(Map map, int w, int h) {
     return (h >= 0 && h < map.height) && (w >= 0 && w < map.width);
 }
 
 //checa se ha minea em um ponto do mapa
-bool has_mine(Map map, int h, int w) {
+bool has_mine(Map map, int w, int h) {
     return map.cells[h][w].has_mine;
 }
 
@@ -138,13 +148,6 @@ Map create_map(int height, int width, int total_mines) {
   return map;
 }
 
-Player start_player_at_first_position() {
-    Player player;
-    player.x = 0;
-    player.y = 0;
-    return player;
-}
-
 Game start_game(Difficulty level) {
   Game game;
 
@@ -167,25 +170,53 @@ Game start_game(Difficulty level) {
   game.map = create_map(height, width, total_mines);
   game.level = level;
   game.total_mines = total_mines;
-  game.player = start_player_at_first_position();
 
   return game;
+}
+
+bool isRevealAction(char action) {
+    return action == 'r';
 }
 
 //metodo principal para realizar logica da partida
 bool play(Difficulty level){  
   std::cout << "\nWelcome to minesweeper!" << std::endl;  
+  std::cout << "\nType r for revealing mines then enter the coordinate x y using pairs of integer such as 0 0 or 10 5" << std::endl;  
     
   char action;
   bool end = false;
   bool won = false;
+  int x, y = 0;
 
   Game game = start_game(level); 
   show_map(game.map);  
 
-  while(end == false) {
+  while(end == false) {  
+   std::cout << std::endl; 
+   std::cout << "Type your action [r/f]: ";   
    std::cin >> action;
-   end = true;
+
+   if(isRevealAction(action)) {
+       //ler coordenadas 
+       std::cout << "Type coord x: ";
+       std::cin >> x;
+       std::cout << "Type coord y: ";
+       std::cin >> y;
+
+       //checar se posicao e valida. Enquanto nao for, pedir coordenadas
+       while(!is_inside_map(game.map, x, y)) {
+           std::cout << "Invalid input" << std::endl;
+           std::cout << "Type coord x: ";
+           std::cin >> x;
+           std::cout << "Type coord y: ";
+           std::cin >> y;
+       }
+
+       //checar se existe bomba, se sim, finaliza jogo com derrota
+        if(has_mine(game.map, x, y)) {
+            end = true;
+        }
+   }
   }
 
   return won;
@@ -276,7 +307,7 @@ void end_game(bool won, int seconds){
   std::string name;
   
   if (won == false){
-    std::cout << "Game Over!!!" << std::endl;
+    std::cout << "\nGame Over!!!" << std::endl;
     return;
   }
   
