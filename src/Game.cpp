@@ -304,8 +304,6 @@ void prompt(int argc, char** argv) {
 
 //finaliza a partida
 void end_game(bool won, int seconds){
-  std::string name;
-  
   if (won == false){
     std::cout << "\nGame Over!!!" << std::endl;
     return;
