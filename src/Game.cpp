@@ -183,6 +183,15 @@ bool isFlagAction(char action) {
     return action == 'f';
 }
 
+//revela todas as celulas do map
+void reveal_all_map(Map &map) {
+    for (int h = 0; h < map.height; h++){
+        for (int w = 0; w < map.width; w++){
+           map.cells[h][w].is_hidden = false;        
+        }
+    }
+}
+
 //metodo principal para realizar logica da partida
 bool play(Difficulty level){  
   std::cout << "\nWelcome to minesweeper!" << std::endl;  
@@ -218,17 +227,16 @@ bool play(Difficulty level){
            std::cin >> y;
        }
 
-       //checar se existe bomba, se sim, finaliza jogo com derrota
+       //checar se existe bomba, se sim, finaliza jogo com derrota e revela todas as celulas do mapa
        if(has_mine(game.map, x, y)) {
-            game.map.cells[y][x].is_hidden = false;
-            game.map.cells[y][x].has_mine = true;
+            reveal_all_map(game.map);
             show_map(game.map); 
-            end = true;
             won = false;
+            end = true;
+       } else {
+            //caso nao seja encontrada uma bomba, e exibida celula
+            game.map.cells[y][x].is_hidden = false;
        }
-
-       //caso nao seja encontrada uma bomba, e exibida celula
-       game.map.cells[y][x].is_hidden = false;
    }
    else {
     std::cout << "Oops..Invalid action!" << std::endl;       
