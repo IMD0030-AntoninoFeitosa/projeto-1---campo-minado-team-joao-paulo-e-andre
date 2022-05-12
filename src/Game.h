@@ -14,7 +14,7 @@ struct Player {
 
 struct Cell {
   bool is_hidden {false};
-  bool has_bomb {false};
+  bool has_mine {false};
   bool has_flag {false};
   short total_mines;
 };

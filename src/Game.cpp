@@ -36,7 +36,7 @@ void show_map(Map map){
         if(map.cells[i][j].has_flag == true){
           std::cout << "F";
         }
-        else if(map.cells[i][j].has_bomb == true){
+        else if(map.cells[i][j].has_mine == true){
           std::cout << "B";
         }
         else{
@@ -70,8 +70,8 @@ void fill_with_mines(Map &map, int total_mines) {
     
     int w = random % map.width;
 
-    if (map.cells[h][w].has_bomb == false){
-        map.cells[h][w].has_bomb = true;
+    if (map.cells[h][w].has_mine == false){
+        map.cells[h][w].has_mine = true;
         count_mines++;
     }
   }
@@ -82,9 +82,9 @@ bool is_inside_map(Map map, int h, int w) {
     return (h >= 0 && h < map.height) && (w >= 0 && w < map.width);
 }
 
-//checa se ha bomba em um ponto do mapa
-bool has_bomb(Map map, int h, int w) {
-    return map.cells[h][w].has_bomb;
+//checa se ha minea em um ponto do mapa
+bool has_mine(Map map, int h, int w) {
+    return map.cells[h][w].has_mine;
 }
 
 //conta quantidade de minas ao redor de um ponto
@@ -95,7 +95,7 @@ int count_nested_mines(Map map, int px, int py) {
     for (int x = -1; x <= 1; x++) {
       int dx = px + x;
       int dy = py + y;
-      if (is_inside_map(map, dx, dy) && has_bomb(map, dx, dy)) {
+      if (is_inside_map(map, dx, dy) && has_mine(map, dx, dy)) {
         count++;
       }
     }
