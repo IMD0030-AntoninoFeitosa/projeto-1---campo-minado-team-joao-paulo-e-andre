@@ -196,6 +196,19 @@ void reveal_all_map(Map &map) {
     }
 }
 
+// checa se o usuário venceu o jogo, ou seja, revelou todas as células que não contêm minas.
+bool check_user_won(Map map) {
+  for (int h = 0; h < map.height; h++){
+    for (int w = 0; w < map.width; w++){
+      if(map.cells[h][w].has_mine && map.cells[h][w].has_flag)
+        continue;
+      else if (map.cells[h][w].is_hidden && !map.cells[h][w].has_mine)
+        return false;
+    }
+  }
+  return true;
+}
+
 //metodo principal para realizar logica da partida
 bool play(Difficulty level){  
   std::cout << "\nWelcome to minesweeper!" << std::endl;  
@@ -240,6 +253,12 @@ bool play(Difficulty level){
        } else {
             //caso nao seja encontrada uma bomba, e exibida celula
             game.map.cells[y][x].is_hidden = false;
+            //ao fim, checa se usuario venceu.
+            won = check_user_won(game.map);
+            //Se sim, encerra o programa. Senao, continua o fluxo
+            if(won) {
+                end = true;
+            }
        }
    }
    else {
