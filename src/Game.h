@@ -8,8 +8,8 @@ const std::string CONFIG_FILE = "./dist/config.txt";
 
 enum class Difficulty { beginner, intermediary, advanced };
 
-struct Position{
-  short x, y;
+struct Player {
+  int x, y;
 };
 
 struct Cell {
@@ -27,14 +27,11 @@ struct Map {
   Cells cells; //pontos de que o mapa é composto
 };
 
-struct Player {
-  Position position;
-};
-
 struct Game {
   short total_mines;
   Difficulty level;
   Map map;
+  Player player;
 };
 
 //reacts to user's inputs such as --difficulty flags etc

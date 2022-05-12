@@ -27,7 +27,7 @@ void show_map(Map map){
   std::cout << std::endl;
   
   for (int i = 0; i < map.height; i++){
-    std::cout << std::setfill('0') << std::setw(2) << i << "   ";
+
     for (int j = 0; j < map.width; j++){
       if (map.cells[i][j].is_hidden == true){
         std::cout << ".";
@@ -47,20 +47,13 @@ void show_map(Map map){
     }
     std::cout << std::endl;
   }
-
-  std::cout << std::endl << "    ";
-
-  for (int i = 0; i < map.height; i++){
-    std::cout << std::setfill('0') << std::setw(2) << i << " ";
-  }
-
-  std::cout << std::endl;
-
   std::cout << std::endl;
 }
 
 //preenche as minas do mapa a depender do total estabelecido pelo nivel do jogo
 void fill_with_mines(Map &map, int total_mines) {
+  std::srand(time(NULL));
+  
   int count_mines = 0;
   
   while(count_mines < total_mines){
@@ -100,6 +93,13 @@ Map create_map(int height, int width, int total_mines) {
   return map;
 }
 
+Player start_player_at_first_position() {
+    Player player;
+    player.x = 0;
+    player.y = 0;
+    return player;
+}
+
 Game start_game(Difficulty level) {
   Game game;
 
@@ -122,39 +122,37 @@ Game start_game(Difficulty level) {
   game.map = create_map(height, width, total_mines);
   game.level = level;
   game.total_mines = total_mines;
+  game.player = start_player_at_first_position();
 
   return game;
 }
 
-//setar posicao do jogador
-void set_player_position(Player& player) {
-    short x, y;
-
-    std::cin >> y >> x;
-
-    player.position.x = x;
-    player.position.y = y;
+void clear_neighbor(Map &map, int px, int py) {
+  for (int y = -1; y <= 1; y++) {
+    for (int x = -1; x <= 1; x++) {
+      int dx = px + x;
+      int dy = py + y;
+      if (dx >= 0 && dx < map.width && dy >= 0 && dy < map.height) {
+        map.cells[dy][dx].is_hidden = false;
+      }
+    }
+  }
 }
 
 //metodo principal para realizar logica da partida
-bool play(Difficulty level){
+bool play(Difficulty level){  
   std::cout << "\nWelcome to minesweeper!" << std::endl;  
-  
-  Game game = start_game(level);
-  show_map(game.map);  
-
+    
+  char action;
   bool end = false;
   bool won = false;
 
-  Player player; 
-
-  set_player_position(player);  
+  Game game = start_game(level); 
+  show_map(game.map);  
 
   while(end == false) {
-    //mover para celular
-    //revelar celula
-    //dizer se perdeu  
-    end = true;
+   std::cin >> action;
+   end = true;
   }
 
   return won;
