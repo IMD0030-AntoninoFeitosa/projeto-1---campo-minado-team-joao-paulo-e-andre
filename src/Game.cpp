@@ -181,7 +181,7 @@ bool isRevealAction(char action) {
 //metodo principal para realizar logica da partida
 bool play(Difficulty level){  
   std::cout << "\nWelcome to minesweeper!" << std::endl;  
-  std::cout << "\nType r for revealing mines then enter the coordinate x y using pairs of integer such as 0 0 or 10 5" << std::endl;  
+  std::cout << "\nType r for revealing mines and f to put flag" << std::endl;  
     
   char action;
   bool end = false;
