@@ -218,12 +218,13 @@ bool play(Difficulty level){
        }
 
        //checar se existe bomba, se sim, finaliza jogo com derrota
-        if(has_mine(game.map, x, y)) {
+       if(has_mine(game.map, x, y)) {
             end = true;
-        }
+            break;
+       }
+       std::cout << "teste";
    }
    else if(isFlagAction(action)) {
-    std::cout << "You pressed f" << std::endl;
    }
    else {
     std::cout << "Oops..Invalid action!" << std::endl;       
