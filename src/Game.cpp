@@ -27,7 +27,7 @@ void show_map(Map map){
   std::cout << std::endl;
   
   for (int i = 0; i < map.height; i++){
-
+    std::cout << std::setfill('0') << std::setw(2) << i << "   ";
     for (int j = 0; j < map.width; j++){
       if (map.cells[i][j].is_hidden == true){
         std::cout << ".";
@@ -47,13 +47,20 @@ void show_map(Map map){
     }
     std::cout << std::endl;
   }
+
+  std::cout << std::endl << "    ";
+
+  for (int i = 0; i < map.height; i++){
+    std::cout << std::setfill('0') << std::setw(2) << i << " ";
+  }  
+
   std::cout << std::endl;
 }
 
 //preenche as minas do mapa a depender do total estabelecido pelo nivel do jogo
 void fill_with_mines(Map &map, int total_mines) {
   std::srand(time(NULL));
-  
+
   int count_mines = 0;
   
   while(count_mines < total_mines){
