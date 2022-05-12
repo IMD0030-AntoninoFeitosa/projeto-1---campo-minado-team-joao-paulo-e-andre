@@ -174,12 +174,12 @@ Game start_game(Difficulty level) {
 }
 
 //checa se e acao de revelar
-bool isRevealAction(char action) {
+bool is_reveal_action(char action) {
     return action == 'r';
 }
 
 //checa se e acao de colocar bandeira
-bool isFlagAction(char action) {
+bool is_flag_action(char action) {
     return action == 'f';
 }
 
@@ -211,7 +211,7 @@ bool play(Difficulty level){
    std::cout << "Type your action [r/f]: ";   
    std::cin >> action;
 
-   if(isRevealAction(action) || isFlagAction(action)) {
+   if(is_reveal_action(action) || is_flag_action(action)) {
        //ler coordenadas 
        std::cout << "Type coord x: ";
        std::cin >> x;
