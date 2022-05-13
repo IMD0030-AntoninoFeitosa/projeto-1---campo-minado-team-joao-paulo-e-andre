@@ -26,11 +26,11 @@
 
 [X] Registro dos 10 melhores tempos/jogadores
 
-[ ] Revelar posições vazias adjacentes
+[  ] Revelar posições vazias adjacentes
 
-[ ] Primeira ação sempre revela uma posição vazia (Intermediário)
+[  ] Primeira ação sempre revela uma posição vazia (Intermediário)
 
-[ ] Primeira ação sempre revela umnúmero (Avançado)
+[  ] Primeira ação sempre revela umnúmero (Avançado)
 
 ## Game Over
 [X] Ao clicar na mina, mostra-se mensagem de que user perdeu e jogo é encerrado;
