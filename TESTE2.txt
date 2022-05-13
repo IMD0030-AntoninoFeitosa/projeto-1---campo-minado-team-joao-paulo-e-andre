@@ -1,5 +1,5 @@
 
-	mkdir dist
+mkdir dist
 
 
 	g++ -c src/utils/string.cpp -o dist/string.o
