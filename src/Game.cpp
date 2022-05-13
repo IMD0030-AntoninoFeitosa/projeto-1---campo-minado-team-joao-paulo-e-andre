@@ -397,7 +397,7 @@ Difficulty load_difficulty(const std::string config_file)
   return level;
 }
 
-std::string toString(Difficulty level)
+std::string to_string(Difficulty level)
 {
   std::string name;
 
@@ -413,19 +413,25 @@ std::string toString(Difficulty level)
 
   return name;
 }
-//show records of players
+
+//get records file based on current level
+std::string get_records_file_name() {
+  Difficulty level = load_difficulty(CONFIG_FILE);
+  std::string levelName = to_string(level);
+  return "./dist/" + levelName + "-ranking" + ".txt";
+}
+
+// show records of players
 void show_records()
 {
-  Difficulty level = load_difficulty(CONFIG_FILE);
-  std::string levelName = toString(level);
-  std::string fileName = "./dist/" + levelName + "-ranking" + ".txt";
+  std::string fileName = get_records_file_name();
   std::string line;
   std::ifstream file;
   std::vector<std::vector<std::string>> players;
 
   file.open(fileName.c_str(), std::ifstream::in);
 
-  std::cout << "Records: " << levelName << std::endl;
+  std::cout << "Records: " << std::endl;
 
   if (file.is_open())
   {
@@ -510,4 +516,19 @@ void end_game(bool won, int seconds)
   }
 
   std::cout << "Congrats! You finished the game in " << seconds << " seconds!" << std::endl;
+
+  std::cout << "Please enter your name:" << std::endl;
+  
+  std::string name;
+  std::cin >> name;
+
+  std::fstream file;
+
+  file.open(get_records_file_name(), std::fstream::app);
+
+  if (file.is_open())
+  {
+    file << name << ";" << seconds << "\n";
+    file.close();
+  }
 }
