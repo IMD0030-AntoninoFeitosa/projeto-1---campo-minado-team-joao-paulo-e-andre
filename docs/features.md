@@ -9,11 +9,6 @@
 
 [X] Avançado
 
-## Game Over
-[X] Ao clicar na mina, mostra-se mensagem de que user perdeu e jogo é encerrado;
-
-[X] Gerar mensagem de log em .txt com  nível da partida
-
 ## Game Play
 [X] Help/Instruções
 
@@ -36,3 +31,6 @@
 [ ] Primeira ação sempre revela uma posição vazia (Intermediário)
 
 [ ] Primeira ação sempre revela umnúmero (Avançado)
+
+## Game Over
+[X] Ao clicar na mina, mostra-se mensagem de que user perdeu e jogo é encerrado;
