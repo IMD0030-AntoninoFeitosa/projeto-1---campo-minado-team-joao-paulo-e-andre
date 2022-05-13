@@ -251,6 +251,46 @@ bool check_user_won(Map map)
   }
   return true;
 }
+//**************************************************************************************
+/*
+void revelar(Map map, int x, int y){
+  if(eh_valida_posicao(x,y)){
+    if(nao_foi_revelada(x,y)){
+      if(map[x][y]._eh_vazia()){
+        revelar(map, x-1, y-1);
+        revelar(map, x  , y-1);
+        revelar(map, x+1, y-1);
+
+        revelar(map, x  , y+1);
+        revelar(map, x  , y-1);
+        
+        revelar(map, x-1, y+1);
+        revelar(map, x  , y+1);
+        revelar(map, x+1, y+1);
+        map[x][y].mostrar(x,y)
+      } else if(map[x][y]._eh_numero()){
+        map[x][y].mostrar(x,y)
+      }
+    }
+  }
+}
+*/
+//**************************************************************************************
+
+// *** função para colocar/retirar flag ***
+void put_takeoff_flag(Game &game, int x, int y)
+{
+  if (game.map.cells[y][x].is_hidden == true && game.map.cells[y][x].has_flag == false)
+  {
+    game.map.cells[y][x].is_hidden = false;
+    game.map.cells[y][x].has_flag = true;
+  }
+  else if (game.map.cells[y][x].is_hidden == false && game.map.cells[y][x].has_flag == true)
+  {
+    game.map.cells[y][x].is_hidden = true;
+    game.map.cells[y][x].has_flag = false;
+  }
+}
 
 // metodo principal para realizar logica da partida
 bool play(Difficulty level)
@@ -284,16 +324,7 @@ bool play(Difficulty level)
       //*** marca/descamarca com bandeira ***
       if (action == 'f')
       {
-        if (game.map.cells[y][x].is_hidden == true && game.map.cells[y][x].has_flag == false)
-        {
-          game.map.cells[y][x].is_hidden = false;
-          game.map.cells[y][x].has_flag = true;
-        }
-        else if (game.map.cells[y][x].is_hidden == false && game.map.cells[y][x].has_flag == true)
-        {
-          game.map.cells[y][x].is_hidden = true;
-          game.map.cells[y][x].has_flag = false;
-        }
+        put_takeoff_flag(game, x, y);
       }
 
       // checar se posicao e valida. Enquanto nao for, pedir coordenadas
@@ -309,7 +340,11 @@ bool play(Difficulty level)
       // checar se existe bomba, se sim, finaliza jogo com derrota e revela todas as celulas do mapa
       //*** adicionei "&& action == 'r'" ao if pra nao entrar caso action == 'f' ***
       if (has_mine(game.map, x, y) && action == 'r')
-      {
+      { 
+        if (game.map.cells[y][x].has_flag == true)
+        {
+          game.map.cells[y][x].has_flag == false;
+        }
         reveal_all_map(game.map);
         show_map(game.map);
         won = false;
@@ -318,9 +353,11 @@ bool play(Difficulty level)
       else
       {
         // caso nao seja encontrada uma bomba, e exibida celula
-        //*** adicionei "if(action == 'r')" pra nao entrar caso action == 'f' ***
+        //*** adicionei "if(action == 'r')" pra nao desmarcar caso action == 'f' ***
         if (action == 'r')
+        {
           game.map.cells[y][x].is_hidden = false;
+        }
         // ao fim, checa se usuario venceu.
         won = check_user_won(game.map);
         // Se sim, encerra o programa. Senao, continua o fluxo
