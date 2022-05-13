@@ -4,14 +4,16 @@
 #include <utility>
 #include <vector>
 #include <fstream>
-#include <time.h> 
+#include <time.h>
 #include <iomanip>
 #include <sstream>
 
 #include "Game.h"
+#include "utils/string.cpp"
 
-//explica como usar comandos do jogo
-void show_usage(){
+// explica como usar comandos do jogo
+void show_usage()
+{
   std::cout << "Usage: game [option]" << std::endl;
   std::cout << "Option:" << std::endl;
   std::cout << " -h or --help                  Display this information." << std::endl;
@@ -21,31 +23,42 @@ void show_usage(){
   std::cout << "                               -a or --advanced" << std::endl;
 }
 
-//exibe mapa do jogo em terminal
-void show_map(Map map){
+// exibe mapa do jogo em terminal
+void show_map(Map map)
+{
   std::cout << std::endl;
-  
-  for (int i = 0; i < map.height; i++){
+
+  for (int i = 0; i < map.height; i++)
+  {
     std::cout << std::setfill('0') << std::setw(2) << i << "   ";
-    for (int j = 0; j < map.width; j++){
-      //celula oculta  
-      if (map.cells[i][j].is_hidden == true){
+    for (int j = 0; j < map.width; j++)
+    {
+      // celula oculta
+      if (map.cells[i][j].is_hidden == true)
+      {
         std::cout << "X";
       }
-      else {
-        //com bandeira (f)
-        if(map.cells[i][j].has_flag == true){
+      else
+      {
+        // com bandeira (f)
+        if (map.cells[i][j].has_flag == true)
+        {
           std::cout << "F";
         }
-        //com minas (m)
-        else if(map.cells[i][j].has_mine == true){
+        // com minas (m)
+        else if (map.cells[i][j].has_mine == true)
+        {
           std::cout << "M";
         }
-        else{
-          if(map.cells[i][j].total_mines > 0) {
-              std::cout << map.cells[i][j].total_mines;  
-          } else {
-              std::cout << " ";
+        else
+        {
+          if (map.cells[i][j].total_mines > 0)
+          {
+            std::cout << map.cells[i][j].total_mines;
+          }
+          else
+          {
+            std::cout << " ";
           }
         }
       }
@@ -54,61 +67,74 @@ void show_map(Map map){
     std::cout << std::endl;
   }
 
-  std::cout << std::endl << "    ";
+  std::cout << std::endl
+            << "    ";
 
-  for (int i = 0; i < map.width; i++){
+  for (int i = 0; i < map.width; i++)
+  {
     std::cout << std::setfill('0') << std::setw(2) << i << " ";
-  }  
+  }
 
-  //linha divisoria do mapa
+  // linha divisoria do mapa
   std::cout << std::endl;
-  std::cout << std::endl << "    ";
-  for (int i = 0; i < map.width; i++){
+  std::cout << std::endl
+            << "    ";
+  for (int i = 0; i < map.width; i++)
+  {
     std::cout << "---";
   }
 
   std::cout << std::endl;
 }
 
-//preenche as minas do mapa a depender do total estabelecido pelo nivel do jogo
-void fill_with_mines(Map &map, int total_mines) {
+// preenche as minas do mapa a depender do total estabelecido pelo nivel do jogo
+void fill_with_mines(Map &map, int total_mines)
+{
   std::srand(time(NULL));
 
   int count_mines = 0;
-  
-  while(count_mines < total_mines){
+
+  while (count_mines < total_mines)
+  {
     int random = rand() % (map.height * map.width);
 
     int h = random / map.height;
-    
+
     int w = random % map.width;
 
-    if (map.cells[h][w].has_mine == false){
-        map.cells[h][w].has_mine = true;
-        count_mines++;
+    if (map.cells[h][w].has_mine == false)
+    {
+      map.cells[h][w].has_mine = true;
+      count_mines++;
     }
   }
 }
 
-//checa se ponto esta dentro do mapa
-bool is_inside_map(Map map, int w, int h) {
-    return (h >= 0 && h < map.height) && (w >= 0 && w < map.width);
+// checa se ponto esta dentro do mapa
+bool is_inside_map(Map map, int w, int h)
+{
+  return (h >= 0 && h < map.height) && (w >= 0 && w < map.width);
 }
 
-//checa se ha minea em um ponto do mapa
-bool has_mine(Map map, int w, int h) {
-    return map.cells[h][w].has_mine;
+// checa se ha minea em um ponto do mapa
+bool has_mine(Map map, int w, int h)
+{
+  return map.cells[h][w].has_mine;
 }
 
-//conta quantidade de minas ao redor de um ponto
-int count_nested_mines(Map map, int px, int py) {
+// conta quantidade de minas ao redor de um ponto
+int count_nested_mines(Map map, int px, int py)
+{
   int count = 0;
-  
-  for (int y = -1; y <= 1; y++) {
-    for (int x = -1; x <= 1; x++) {
+
+  for (int y = -1; y <= 1; y++)
+  {
+    for (int x = -1; x <= 1; x++)
+    {
       int dx = px + x;
       int dy = py + y;
-      if (is_inside_map(map, dx, dy) && has_mine(map, dx, dy)) {
+      if (is_inside_map(map, dx, dy) && has_mine(map, dx, dy))
+      {
         count++;
       }
     }
@@ -117,27 +143,33 @@ int count_nested_mines(Map map, int px, int py) {
   return count;
 }
 
-//preenche quantidade de minas ao redor de cada celula do mapa inteiro
-void fill_with_count_nested_mines(Map &map) {
-    for (int h = 0; h < map.height; h++){
-        for (int w = 0; w < map.width; w++){
-           map.cells[h][w].total_mines = count_nested_mines(map, w, h);           
-        }
+// preenche quantidade de minas ao redor de cada celula do mapa inteiro
+void fill_with_count_nested_mines(Map &map)
+{
+  for (int h = 0; h < map.height; h++)
+  {
+    for (int w = 0; w < map.width; w++)
+    {
+      map.cells[h][w].total_mines = count_nested_mines(map, w, h);
     }
+  }
 }
 
-//cria mapa do jogo
-Map create_map(int height, int width, int total_mines) {
-  Map map;  
+// cria mapa do jogo
+Map create_map(int height, int width, int total_mines)
+{
+  Map map;
   map.height = height;
   map.width = width;
 
-  Cell cell;  
+  Cell cell;
 
-  for (int i = 0; i < map.height; i++){
+  for (int i = 0; i < map.height; i++)
+  {
     std::vector<Cell> cells;
 
-    for (int j = 0; j < map.width; j++){
+    for (int j = 0; j < map.width; j++)
+    {
       cells.push_back(cell);
     }
 
@@ -145,29 +177,32 @@ Map create_map(int height, int width, int total_mines) {
   }
 
   fill_with_mines(map, total_mines);
-  
+
   fill_with_count_nested_mines(map);
 
   return map;
 }
 
-Game start_game(Difficulty level) {
+Game start_game(Difficulty level)
+{
   Game game;
 
   int height = 10;
-  int width = 10;  
+  int width = 10;
   int total_mines = 10;
 
-  if(level == Difficulty::intermediary){
-      height = 15;
-      width = 15;
-      total_mines = 40; 
+  if (level == Difficulty::intermediary)
+  {
+    height = 15;
+    width = 15;
+    total_mines = 40;
   }
 
- if(level == Difficulty::advanced){
-     height = 30;
-     width = 15;
-     total_mines = 100;
+  if (level == Difficulty::advanced)
+  {
+    height = 30;
+    width = 15;
+    total_mines = 100;
   }
 
   game.map = create_map(height, width, total_mines);
@@ -177,30 +212,38 @@ Game start_game(Difficulty level) {
   return game;
 }
 
-//checa se e acao de revelar
-bool is_reveal_action(char action) {
-    return action == 'r';
+// checa se e acao de revelar
+bool is_reveal_action(char action)
+{
+  return action == 'r';
 }
 
-//checa se e acao de colocar bandeira
-bool is_flag_action(char action) {
-    return action == 'f';
+// checa se e acao de colocar bandeira
+bool is_flag_action(char action)
+{
+  return action == 'f';
 }
 
-//revela todas as celulas do map
-void reveal_all_map(Map &map) {
-    for (int h = 0; h < map.height; h++){
-        for (int w = 0; w < map.width; w++){
-           map.cells[h][w].is_hidden = false;        
-        }
+// revela todas as celulas do map
+void reveal_all_map(Map &map)
+{
+  for (int h = 0; h < map.height; h++)
+  {
+    for (int w = 0; w < map.width; w++)
+    {
+      map.cells[h][w].is_hidden = false;
     }
+  }
 }
 
 // checa se o usuário venceu o jogo, ou seja, revelou todas as células que não contêm minas.
-bool check_user_won(Map map) {
-  for (int h = 0; h < map.height; h++){
-    for (int w = 0; w < map.width; w++){
-      if(map.cells[h][w].has_mine && map.cells[h][w].has_flag)
+bool check_user_won(Map map)
+{
+  for (int h = 0; h < map.height; h++)
+  {
+    for (int w = 0; w < map.width; w++)
+    {
+      if (map.cells[h][w].has_mine && map.cells[h][w].has_flag)
         continue;
       else if (map.cells[h][w].is_hidden && !map.cells[h][w].has_mine)
         return false;
@@ -209,166 +252,262 @@ bool check_user_won(Map map) {
   return true;
 }
 
-//metodo principal para realizar logica da partida
-bool play(Difficulty level){  
-  std::cout << "\nWelcome to minesweeper!" << std::endl;  
-  std::cout << "\nType r for revealing mines and f to put flag" << std::endl;  
-    
+// metodo principal para realizar logica da partida
+bool play(Difficulty level)
+{
+  std::cout << "\nWelcome to minesweeper!" << std::endl;
+  std::cout << "\nType r for revealing mines and f to put flag" << std::endl;
+
   char action;
   bool end = false;
   bool won = false;
   int x, y = 0;
 
-  Game game = start_game(level); 
+  Game game = start_game(level);
 
-  while(end == false) {  
-   show_map(game.map);     
+  while (end == false)
+  {
+    show_map(game.map);
 
-   std::cout << std::endl; 
-   std::cout << "Type your action [r/f]: ";   
-   std::cin >> action;
+    std::cout << std::endl;
+    std::cout << "Type your action [r/f]: ";
+    std::cin >> action;
 
-   if(is_reveal_action(action) || is_flag_action(action)) {
-       //ler coordenadas 
-       std::cout << "Type coord x: ";
-       std::cin >> x;
-       std::cout << "Type coord y: ";
-       std::cin >> y;
-     
-       //*** marca/descamarca com bandeira ***
-       if(action == 'f'){
-           if(game.map.cells[y][x].is_hidden == true && game.map.cells[y][x].has_flag == false){
-               game.map.cells[y][x].is_hidden = false;
-               game.map.cells[y][x].has_flag = true;
-           }
-           else if(game.map.cells[y][x].is_hidden == false && game.map.cells[y][x].has_flag == true){
-               game.map.cells[y][x].is_hidden = true;
-               game.map.cells[y][x].has_flag = false;
-           }
-       }
+    if (is_reveal_action(action) || is_flag_action(action))
+    {
+      // ler coordenadas
+      std::cout << "Type coord x: ";
+      std::cin >> x;
+      std::cout << "Type coord y: ";
+      std::cin >> y;
 
-       //checar se posicao e valida. Enquanto nao for, pedir coordenadas
-       while(!is_inside_map(game.map, x, y)) {
-           std::cout << "Invalid input" << std::endl;
-           std::cout << "Type coord x: ";
-           std::cin >> x;
-           std::cout << "Type coord y: ";
-           std::cin >> y;
-       }
+      //*** marca/descamarca com bandeira ***
+      if (action == 'f')
+      {
+        if (game.map.cells[y][x].is_hidden == true && game.map.cells[y][x].has_flag == false)
+        {
+          game.map.cells[y][x].is_hidden = false;
+          game.map.cells[y][x].has_flag = true;
+        }
+        else if (game.map.cells[y][x].is_hidden == false && game.map.cells[y][x].has_flag == true)
+        {
+          game.map.cells[y][x].is_hidden = true;
+          game.map.cells[y][x].has_flag = false;
+        }
+      }
 
-       //checar se existe bomba, se sim, finaliza jogo com derrota e revela todas as celulas do mapa
-       //*** adicionei "&& action == 'r'" ao if pra nao entrar caso action == 'f' ***
-       if(has_mine(game.map, x, y) && action == 'r') {
-            reveal_all_map(game.map);
-            show_map(game.map); 
-            won = false;
-            end = true;
-       } else {
-            //caso nao seja encontrada uma bomba, e exibida celula
-            //*** adicionei "if(action == 'r')" pra nao entrar caso action == 'f' ***
-            if(action == 'r') game.map.cells[y][x].is_hidden = false;
-            //ao fim, checa se usuario venceu.
-            won = check_user_won(game.map);
-            //Se sim, encerra o programa. Senao, continua o fluxo
-            if(won) {
-                end = true;
-            }
-       }
-   }
-   else {
-    std::cout << "Oops..Invalid action!" << std::endl;       
-   } 
+      // checar se posicao e valida. Enquanto nao for, pedir coordenadas
+      while (!is_inside_map(game.map, x, y))
+      {
+        std::cout << "Invalid input" << std::endl;
+        std::cout << "Type coord x: ";
+        std::cin >> x;
+        std::cout << "Type coord y: ";
+        std::cin >> y;
+      }
+
+      // checar se existe bomba, se sim, finaliza jogo com derrota e revela todas as celulas do mapa
+      //*** adicionei "&& action == 'r'" ao if pra nao entrar caso action == 'f' ***
+      if (has_mine(game.map, x, y) && action == 'r')
+      {
+        reveal_all_map(game.map);
+        show_map(game.map);
+        won = false;
+        end = true;
+      }
+      else
+      {
+        // caso nao seja encontrada uma bomba, e exibida celula
+        //*** adicionei "if(action == 'r')" pra nao entrar caso action == 'f' ***
+        if (action == 'r')
+          game.map.cells[y][x].is_hidden = false;
+        // ao fim, checa se usuario venceu.
+        won = check_user_won(game.map);
+        // Se sim, encerra o programa. Senao, continua o fluxo
+        if (won)
+        {
+          end = true;
+        }
+      }
+    }
+    else
+    {
+      std::cout << "Oops..Invalid action!" << std::endl;
+    }
   }
 
   return won;
 }
 
-//grava dificuldade (nivel) em arquivo de configuracao
-void log_difficulty(const std::string config_file, Difficulty level){
+// grava dificuldade (nivel) em arquivo de configuracao
+void log_difficulty(const std::string config_file, Difficulty level)
+{
   std::ofstream file;
-  file.open (config_file.c_str(), std::ifstream::out);
-  if(file.is_open()){
-    switch(level){
-      case Difficulty::beginner:
-        file << 'b';
-        std::cout << "Difficulty set to begginer!" << std::endl;
-        break;
-      case Difficulty::intermediary:
-        file << 'i';
-        std::cout << "Difficulty set to intermediary!" << std::endl;
-        break;
-      case Difficulty::advanced:
-        file << 'a';
-        std::cout << "Difficulty set to advanced!" << std::endl;
-        break;
+  file.open(config_file.c_str(), std::ifstream::out);
+  if (file.is_open())
+  {
+    switch (level)
+    {
+    case Difficulty::beginner:
+      file << 'b';
+      std::cout << "Difficulty set to begginer!" << std::endl;
+      break;
+    case Difficulty::intermediary:
+      file << 'i';
+      std::cout << "Difficulty set to intermediary!" << std::endl;
+      break;
+    case Difficulty::advanced:
+      file << 'a';
+      std::cout << "Difficulty set to advanced!" << std::endl;
+      break;
     }
     file.close();
   }
 }
 
-//carrega a dificuldade (nivel) atual
-Difficulty load_difficulty(const std::string config_file){
+// carrega a dificuldade (nivel) atual
+Difficulty load_difficulty(const std::string config_file)
+{
   Difficulty level;
   std::ifstream file;
-  file.open (config_file.c_str(), std::ifstream::in);
-  if(file.is_open()){
+  file.open(config_file.c_str(), std::ifstream::in);
+  if (file.is_open())
+  {
     char c;
     file >> c;
-    switch(c){
-      case 'b': level = Difficulty::beginner; break;
-      case 'i': level = Difficulty::intermediary; break;
-      case 'a': level = Difficulty::advanced; break;
+    switch (c)
+    {
+    case 'b':
+      level = Difficulty::beginner;
+      break;
+    case 'i':
+      level = Difficulty::intermediary;
+      break;
+    case 'a':
+      level = Difficulty::advanced;
+      break;
     }
     file.close();
-  } else {
+  }
+  else
+  {
     log_difficulty(config_file, Difficulty::beginner);
     level = Difficulty::beginner;
   }
   return level;
 }
 
-//reage a acoes do usuario via terminal. Prompt do jogo
-void prompt(int argc, char** argv) {
-    std::string arg = argv[1];
-    
-    if (arg == "-h" || arg == "-help"){
-      show_usage();
+std::string toString(Difficulty level)
+{
+  std::string name;
+
+  switch (level)
+  {
+  case Difficulty::intermediary:
+    name = "intermediary";
+  case Difficulty::advanced:
+    name = "advanced";
+  default:
+    name = "beginner";
+  }
+
+  return name;
+}
+//show records of players
+void show_records()
+{
+  Difficulty level = load_difficulty(CONFIG_FILE);
+  std::string levelName = toString(level);
+  std::string fileName = "./dist/" + levelName + "-ranking" + ".txt";
+  std::string line;
+  std::ifstream file;
+  std::vector<std::vector<std::string>> players;
+
+  file.open(fileName.c_str(), std::ifstream::in);
+
+  std::cout << "Records: " << levelName << std::endl;
+
+  if (file.is_open())
+  {
+    while (getline(file, line))
+    {
+      std::vector<std::string> info;
+      split(line, ';', info);
+      players.push_back(info);
     }
-    else if (arg == "-d" || arg == "--difficulty"){
-      if (argc > 2){
-        std::string newlevel = argv[2];
-        
-        if(newlevel == "-b" || newlevel == "--beginner"){
-          log_difficulty(CONFIG_FILE, Difficulty::beginner);
-        }
-        else if(newlevel == "-i" || newlevel == "--intermediary"){
-          log_difficulty(CONFIG_FILE, Difficulty::intermediary);
-        }
-        else if(newlevel == "-a" || newlevel == "--advanced"){
-          log_difficulty(CONFIG_FILE, Difficulty::advanced);
-        }
-        else {
-          std::cout << "Unknown difficulty argument: " << newlevel << std::endl;
-          show_usage();
-        }
+    file.close();
+    players.shrink_to_fit();
+    sort(players);
+    for (int i = 0; i < players.size(); i++)
+    {
+      std::cout << std::setfill('0') << std::setw(2) << i + 1 << ": ";
+      std::cout << players[i][0] << " - " << players[i][1] << "  seconds." << std::endl;
+    }
+  }
+  else
+  {
+    std::cout << "Unexpected error when opening file " << fileName << std::endl;
+  }
+}
+
+// reage a acoes do usuario via terminal. Prompt do jogo
+void prompt(int argc, char **argv)
+{
+  std::string arg = argv[1];
+
+  if (arg == "-h" || arg == "-help")
+  {
+    show_usage();
+  }
+  else if (arg == "-r" || arg == "--records")
+  {
+    show_records();
+  }
+  else if (arg == "-d" || arg == "--difficulty")
+  {
+    if (argc > 2)
+    {
+      std::string newlevel = argv[2];
+
+      if (newlevel == "-b" || newlevel == "--beginner")
+      {
+        log_difficulty(CONFIG_FILE, Difficulty::beginner);
       }
-      else {
-        std::cout << "It was expected a difficulty for: " << argv[1] << std::endl;
+      else if (newlevel == "-i" || newlevel == "--intermediary")
+      {
+        log_difficulty(CONFIG_FILE, Difficulty::intermediary);
+      }
+      else if (newlevel == "-a" || newlevel == "--advanced")
+      {
+        log_difficulty(CONFIG_FILE, Difficulty::advanced);
+      }
+      else
+      {
+        std::cout << "Unknown difficulty argument: " << newlevel << std::endl;
         show_usage();
       }
     }
-    else {
-      std::cout << "Unknown argument: " << argv[1] << std::endl;
+    else
+    {
+      std::cout << "It was expected a difficulty for: " << argv[1] << std::endl;
       show_usage();
     }
+  }
+  else
+  {
+    std::cout << "Unknown argument: " << argv[1] << std::endl;
+    show_usage();
+  }
 }
 
-//finaliza a partida
-void end_game(bool won, int seconds){
-  if (won == false){
+// finaliza a partida
+void end_game(bool won, int seconds)
+{
+  if (won == false)
+  {
     std::cout << "\nGame Over!!!" << std::endl;
     return;
   }
-  
-  std::cout << "Congrats! You finished the game in " << seconds << " seconds!"<< std::endl;
+
+  std::cout << "Congrats! You finished the game in " << seconds << " seconds!" << std::endl;
 }
