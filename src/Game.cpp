@@ -447,7 +447,7 @@ void show_records()
     for (int i = 0; i < players.size(); i++)
     {
       std::cout << std::setfill('0') << std::setw(2) << i + 1 << ": ";
-      std::cout << players[i][0] << " - " << players[i][1] << "  seconds." << std::endl;
+      std::cout << players[i][0] << " - " << players[i][1] << " seconds." << std::endl;
     }
   }
   else
