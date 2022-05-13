@@ -2,8 +2,11 @@
 
 ## Mapa
 [X] Criação de Mapas
+
 [X] Iniciante
+
 [X] Intermediário
+
 [X] Avançado
 
 ## Game Over
