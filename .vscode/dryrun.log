@@ -1,6 +1,7 @@
 make.exe --dry-run --always-make --keep-going --print-directory
 make: Entering directory 'c:/Users/arqan/OneDrive/�rea de Trabalho/GIT/projeto-1---campo-minado-team-joao-paulo-e-andre_FORK'
 echo Hello, we're getting things ready for ya...
+ 
 mkdir dist
 g++ -c src/utils/string.cpp -o dist/string.o
 g++ -c src/utils/time.cpp -o dist/time.o

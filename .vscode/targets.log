@@ -7,8 +7,9 @@ make: *** No rule to make target 'all'.  Stop.
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
+ 
 
-# Make data base, printed on Fri May 13 15:31:54 2022
+# Make data base, printed on Fri May 13 22:31:34 2022
 
 # Variables
 
@@ -23,11 +24,12 @@ USERPROFILE = C:\Users\arqan
 # environment
 LOCALAPPDATA = C:\Users\arqan\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-a093465d-ff4a-4c74-b8eb-ed8de4bd5904-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-40f3c304-6db6-4dda-93ea-ca8b34e762d1-sock
 # environment
 VSCODE_CWD = C:\Users\arqan\AppData\Local\Programs\Microsoft VS Code
 # environment
-CHOCOLATEYINSTALL = C:\ProgramData\chocolatey
+CHOCOLATEYINSTALL = C: 
+\ProgramData\chocolatey
 # environment
 SYSTEMROOT = C:\WINDOWS
 # environment
@@ -39,7 +41,8 @@ MAKE_COMMAND := C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_6244_RTGNIUWELAPPPVEA
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_4244_SACBJ 
+PJPIHLQVLCK
 # environment
 ONEDRIVECOMMERCIAL = D:\OneDrive - ufrn.edu.br
 # environment
@@ -57,7 +60,8 @@ VSCODE_LOG_STACK = false
 # automatic
 %F = $(notdir $%)
 # environment
-VSCODE_CODE_CACHE_PATH = C:\Users\arqan\AppData\Roaming\Code\CachedData\da15b6fd3ef856477bf6f4fb29ba1b7af717770d
+VSCODE_CODE_CACHE_PATH = C:\Users\arqan\AppData\Roaming\Code\CachedData\da15b6fd3ef856477bf6f4fb29ba1 
+b7af717770d
 # environment
 LANG = C
 # default
@@ -79,7 +83,8 @@ VSCODE_PIPE_LOGGING = true
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # automatic
-*D = $(patsubst %/,%,$(patsubst %\,%,$(dir $*)))
+*D = $(patsubst 
+ %/,%,$(patsubst %\,%,$(dir $*)))
 # environment
 PROGRAMFILES = C:\Program Files (x86)
 # environment
@@ -97,7 +102,7 @@ MAKEFILE_LIST := Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 6244
+VSCODE_PID = 4244
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # automatic
@@ -177,8 +182,7 @@ USERDOMAIN_ROAMINGPROFILE = LAPTOP-ODUHE9LH
 # environment
 NUMBER_OF_PROCESSORS = 8
 # environment
-PUBLIC = C:\User 
-s\Public
+PUBLIC = C:\Users\Public
 # environment
 ASL.LOG = Destination=file
 # environment
@@ -214,7 +218,8 @@ SESSIONNAME = Console
 # environment
 PROCESSOR_REVISION = 9e09
 # environment
-PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 158 Stepping 9, GenuineIntel
+PROCESSOR_IDE 
+NTIFIER = Intel64 Family 6 Model 158 Stepping 9, GenuineIntel
 # variable set hash-table stats:
 # Load=101/1024=10%, Rehash=0, Collisions=10/128=8%
 
@@ -292,7 +297,8 @@ main:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 16):
+#  recipe to execute (from 'Makefile 
+', line 16):
 	g++ -o dist/main dist/main.o dist/Game.o
 	./dist/main
 
@@ -310,6 +316,6 @@ main:
 # strcache performance: lookups = 34 / hit rate = 47%
 # hash-table stats:
 # Load=18/8192=0%, Rehash=0, Collisions=0/34=0%
-# Finished Make data base on Fri May 13 15:31:54 2022
+# Finished Make data base on Fri May 13 22:31:34 2022
 
  

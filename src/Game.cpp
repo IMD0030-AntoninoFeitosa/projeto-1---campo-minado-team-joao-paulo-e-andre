@@ -277,21 +277,6 @@ void revelar(Map map, int x, int y){
 */
 //**************************************************************************************
 
-// *** função para colocar/retirar flag ***
-void put_takeoff_flag(Game &game, int x, int y)
-{
-  if (game.map.cells[y][x].is_hidden == true && game.map.cells[y][x].has_flag == false)
-  {
-    game.map.cells[y][x].is_hidden = false;
-    game.map.cells[y][x].has_flag = true;
-  }
-  else if (game.map.cells[y][x].is_hidden == false && game.map.cells[y][x].has_flag == true)
-  {
-    game.map.cells[y][x].is_hidden = true;
-    game.map.cells[y][x].has_flag = false;
-  }
-}
-
 // metodo principal para realizar logica da partida
 bool play(Difficulty level)
 {
@@ -302,6 +287,7 @@ bool play(Difficulty level)
   bool end = false;
   bool won = false;
   int x, y = 0;
+  int jogada = 1;
 
   Game game = start_game(level);
 
@@ -321,12 +307,6 @@ bool play(Difficulty level)
       std::cout << "Type coord y: ";
       std::cin >> y;
 
-      //*** marca/descamarca com bandeira ***
-      if (action == 'f')
-      {
-        put_takeoff_flag(game, x, y);
-      }
-
       // checar se posicao e valida. Enquanto nao for, pedir coordenadas
       while (!is_inside_map(game.map, x, y))
       {
@@ -337,35 +317,52 @@ bool play(Difficulty level)
         std::cin >> y;
       }
 
-      // checar se existe bomba, se sim, finaliza jogo com derrota e revela todas as celulas do mapa
-      //*** adicionei "&& action == 'r'" ao if pra nao entrar caso action == 'f' ***
-      if (has_mine(game.map, x, y) && action == 'r')
-      { 
-        if (game.map.cells[y][x].has_flag == true)
-        {
-          game.map.cells[y][x].has_flag == false;
-        }
-        reveal_all_map(game.map);
-        show_map(game.map);
-        won = false;
-        end = true;
-      }
-      else
+      //*** marca/descamarca com bandeira ***
+      if (action == 'f')
       {
-        // caso nao seja encontrada uma bomba, e exibida celula
-        //*** adicionei "if(action == 'r')" pra nao desmarcar caso action == 'f' ***
-        if (action == 'r')
+        put_takeoff_flag(game, x, y);
+      }
+
+      if (action == 'r')
+      {
+        /*      
+        if (game.level == Difficulty::intermediary && jogada == 1)
         {
-          game.map.cells[y][x].is_hidden = false;
+          
+
+
         }
-        // ao fim, checa se usuario venceu.
-        won = check_user_won(game.map);
-        // Se sim, encerra o programa. Senao, continua o fluxo
-        if (won)
+
+        if (game.level == Difficulty::advanced && jogada == 1)
         {
+          
+          
+
+        }
+        */
+        // checar se existe bomba, se sim, finaliza jogo com derrota e revela todas as celulas do mapa
+        if (has_mine(game.map, x, y))
+        { 
+          reveal_all_map(game.map);
+          show_map(game.map);
+          won = false;
           end = true;
         }
+        else
+        {
+          // caso nao seja encontrada uma bomba, e exibida celula
+          game.map.cells[y][x].is_hidden = false;
+          
+          // ao fim, checa se usuario venceu.
+          won = check_user_won(game.map);
+          // Se sim, encerra o programa. Senao, continua o fluxo
+          if (won)
+          {
+            end = true;
+          }
+        }
       }
+
     }
     else
     {
@@ -569,3 +566,19 @@ void end_game(bool won, int seconds)
     file.close();
   }
 }
+
+// *** função para colocar/retirar flag ***
+void put_takeoff_flag(Game &game, int x, int y)
+{
+  if (game.map.cells[y][x].is_hidden == true && game.map.cells[y][x].has_flag == false)
+  {
+    game.map.cells[y][x].is_hidden = false;
+    game.map.cells[y][x].has_flag = true;
+  }
+  else if (game.map.cells[y][x].is_hidden == false && game.map.cells[y][x].has_flag == true)
+  {
+    game.map.cells[y][x].is_hidden = true;
+    game.map.cells[y][x].has_flag = false;
+  }
+}
+
