@@ -262,6 +262,7 @@ bool play(Difficulty level)
   bool end = false;
   bool won = false;
   int x, y = 0;
+  int jogada = 1;
 
   Game game = start_game(level);
 
@@ -281,21 +282,6 @@ bool play(Difficulty level)
       std::cout << "Type coord y: ";
       std::cin >> y;
 
-      //*** marca/descamarca com bandeira ***
-      if (action == 'f')
-      {
-        if (game.map.cells[y][x].is_hidden == true && game.map.cells[y][x].has_flag == false)
-        {
-          game.map.cells[y][x].is_hidden = false;
-          game.map.cells[y][x].has_flag = true;
-        }
-        else if (game.map.cells[y][x].is_hidden == false && game.map.cells[y][x].has_flag == true)
-        {
-          game.map.cells[y][x].is_hidden = true;
-          game.map.cells[y][x].has_flag = false;
-        }
-      }
-
       // checar se posicao e valida. Enquanto nao for, pedir coordenadas
       while (!is_inside_map(game.map, x, y))
       {
@@ -306,29 +292,43 @@ bool play(Difficulty level)
         std::cin >> y;
       }
 
-      // checar se existe bomba, se sim, finaliza jogo com derrota e revela todas as celulas do mapa
-      //*** adicionei "&& action == 'r'" ao if pra nao entrar caso action == 'f' ***
-      if (has_mine(game.map, x, y) && action == 'r')
+      //*** marca/descamarca com bandeira ***
+      if (action == 'f')
       {
-        reveal_all_map(game.map);
-        show_map(game.map);
-        won = false;
-        end = true;
+        put_takeoff_flag(game, x, y);
       }
-      else
+
+      if (action == 'r')
       {
-        // caso nao seja encontrada uma bomba, e exibida celula
-        //*** adicionei "if(action == 'r')" pra nao entrar caso action == 'f' ***
-        if (action == 'r')
-          game.map.cells[y][x].is_hidden = false;
-        // ao fim, checa se usuario venceu.
-        won = check_user_won(game.map);
-        // Se sim, encerra o programa. Senao, continua o fluxo
-        if (won)
-        {
+        if (has_mine(game.map, x, y))
+        { 
+          reveal_all_map(game.map);
+          show_map(game.map);
+          won = false;
           end = true;
         }
+        else
+        {
+          // caso nao seja encontrada um numero, eh exibida celula
+          if (count_nested_mines(game.map, x, y) > 0)
+          {
+            game.map.cells[y][x].is_hidden = false;
+          }
+          else
+          {
+            //revelar células vizinhas
+            revelar(game, x, y);
+          }
+          // ao fim, checa se usuario venceu.
+          won = check_user_won(game.map);
+          // Se sim, encerra o programa. Senao, continua o fluxo
+          if (won)
+          {
+            end = true;
+          }
+        }
       }
+
     }
     else
     {
@@ -530,5 +530,65 @@ void end_game(bool won, int seconds)
   {
     file << name << ";" << seconds << "\n";
     file.close();
+  }
+}
+
+// *** função para colocar/retirar flag ***
+void put_takeoff_flag(Game &game, int x, int y)
+{
+  if (game.map.cells[y][x].is_hidden == true && game.map.cells[y][x].has_flag == false)
+  {
+    game.map.cells[y][x].is_hidden = false;
+    game.map.cells[y][x].has_flag = true;
+  }
+  else if (game.map.cells[y][x].is_hidden == false && game.map.cells[y][x].has_flag == true)
+  {
+    game.map.cells[y][x].is_hidden = true;
+    game.map.cells[y][x].has_flag = false;
+  }
+}
+
+// *** revelar celular vazias ***
+void revelar(Game &game, int x, int y)
+{
+  if(is_inside_map(game.map, x, y))
+  {
+    if (game.map.cells[y][x].is_hidden)
+    {
+      if (count_nested_mines(game.map, x, y) == 0 && game.map.cells[y][x].has_mine == false)
+      {
+        
+        game.map.cells[y][x].is_hidden = false;
+
+        for (int j = -1; j <= 1; j+=2)
+        {
+          for (int i = -1; i <= 1; i+=2)
+          {
+            int dx = x + i;
+            int dy = y + j;
+
+            if (is_inside_map(game.map, dx , dy) && count_nested_mines(game.map, dx, dy) > 0 && game.map.cells[dy][dx].has_mine == false)
+            {
+              game.map.cells[dy][dx].is_hidden = false;
+            }
+          }
+        }
+
+        revelar(game, x-1 , y  ); //N
+        revelar(game, x   , y-1); //E
+        revelar(game, x   , y+1); //O
+        revelar(game, x+1 , y  ); //S
+
+        //revelar(game, x-1 , y-1); //NO
+        //revelar(game, x-1 , y+1); //NE
+        //revelar(game, x+1 , y-1); //SO
+        //revelar(game, x+1 , y+1); //SE
+                
+      } 
+      else if(count_nested_mines(game.map, x, y) > 0 && game.map.cells[y][x].has_mine == false)
+      {
+        game.map.cells[y][x].is_hidden = false;
+      }
+    }
   }
 }
