@@ -53,4 +53,6 @@ int remove_nested_mines(Game &game, int px, int py);
 
 void put_takeoff_flag(Game &game, int x, int y);
 
+void revelar(Game &game, int x, int y);
+
 #endif

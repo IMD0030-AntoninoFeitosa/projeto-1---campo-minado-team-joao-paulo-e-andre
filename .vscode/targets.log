@@ -7,9 +7,8 @@ make: *** No rule to make target 'all'.  Stop.
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
- 
 
-# Make data base, printed on Fri May 13 22:31:34 2022
+# Make data base, printed on Sat May 14 10:24:43 2022
 
 # Variables
 
@@ -24,12 +23,11 @@ USERPROFILE = C:\Users\arqan
 # environment
 LOCALAPPDATA = C:\Users\arqan\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-40f3c304-6db6-4dda-93ea-ca8b34e762d1-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-f931f199-fe8b-40a2-afb3-b4f9e9a966f0-sock
 # environment
 VSCODE_CWD = C:\Users\arqan\AppData\Local\Programs\Microsoft VS Code
 # environment
-CHOCOLATEYINSTALL = C: 
-\ProgramData\chocolatey
+CHOCOLATEYINSTALL = C:\ProgramData\chocolatey
 # environment
 SYSTEMROOT = C:\WINDOWS
 # environment
@@ -41,8 +39,7 @@ MAKE_COMMAND := C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_4244_SACBJ 
-PJPIHLQVLCK
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_18560_NPSRNQGTCREQCYAH
 # environment
 ONEDRIVECOMMERCIAL = D:\OneDrive - ufrn.edu.br
 # environment
@@ -60,8 +57,7 @@ VSCODE_LOG_STACK = false
 # automatic
 %F = $(notdir $%)
 # environment
-VSCODE_CODE_CACHE_PATH = C:\Users\arqan\AppData\Roaming\Code\CachedData\da15b6fd3ef856477bf6f4fb29ba1 
-b7af717770d
+VSCODE_CODE_CACHE_PATH = C:\Users\arqan\AppData\Roaming\Code\CachedData\da15b6fd3ef856477bf6f4fb29ba1b7af717770d
 # environment
 LANG = C
 # default
@@ -81,10 +77,9 @@ CURDIR := c:/Users/arqan/OneDrive/�rea de Trabalho/GIT/projeto-1---campo-minad
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # automatic
-*D = $(patsubst 
- %/,%,$(patsubst %\,%,$(dir $*)))
+*D = $(patsubst %/,%,$(patsubst %\,%,$(dir $*)))
 # environment
 PROGRAMFILES = C:\Program Files (x86)
 # environment
@@ -102,7 +97,7 @@ MAKEFILE_LIST := Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 4244
+VSCODE_PID = 18560
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # automatic
@@ -218,8 +213,8 @@ SESSIONNAME = Console
 # environment
 PROCESSOR_REVISION = 9e09
 # environment
-PROCESSOR_IDE 
-NTIFIER = Intel64 Family 6 Model 158 Stepping 9, GenuineIntel
+PROCESSO 
+R_IDENTIFIER = Intel64 Family 6 Model 158 Stepping 9, GenuineIntel
 # variable set hash-table stats:
 # Load=101/1024=10%, Rehash=0, Collisions=10/128=8%
 
@@ -229,9 +224,9 @@ NTIFIER = Intel64 Family 6 Model 158 Stepping 9, GenuineIntel
 
 # Directories
 
-# . (key c:/Users/arqan/OneDrive/�rea de Trabalho/GIT/projeto-1---campo-minado-team-joao-paulo-e-andre_FORK, mtime 1652448377): 10 files, no impossibilities.
+# . (key c:/Users/arqan/OneDrive/�rea de Trabalho/GIT/projeto-1---campo-minado-team-joao-paulo-e-andre_FORK, mtime 1652534674): 9 files, no impossibilities.
 
-# 10 files, no impossibilities in 1 directories.
+# 9 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -269,7 +264,7 @@ reload: app
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-13 00:55:07
+#  Last modified 2022-05-14 10:24:34
 #  File has been updated.
 #  Successfully updated.
 
@@ -297,8 +292,7 @@ main:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile 
-', line 16):
+#  recipe to execute (from 'Makefile', line 16):
 	g++ -o dist/main dist/main.o dist/Game.o
 	./dist/main
 
@@ -313,9 +307,9 @@ main:
 # strcache buffers: 1 (0) / strings = 18 / storage = 110 B / avg = 6 B
 # current buf: size = 8174 B / used = 110 B / count = 18 / avg = 6 B
 
-# strcache performance: lookups = 34 / hit rate = 47%
+# strcache performance: lookups = 33 / hit rate = 45%
 # hash-table stats:
-# Load=18/8192=0%, Rehash=0, Collisions=0/34=0%
-# Finished Make data base on Fri May 13 22:31:34 2022
+# Load=18/8192=0%, Rehash=0, Collisions=0/33=0%
+# Finished Make data base on Sat May 14 10:24:43 2022
 
  

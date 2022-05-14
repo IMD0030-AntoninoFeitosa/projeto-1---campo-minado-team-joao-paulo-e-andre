@@ -251,31 +251,6 @@ bool check_user_won(Map map)
   }
   return true;
 }
-//**************************************************************************************
-/*
-void revelar(Map map, int x, int y){
-  if(eh_valida_posicao(x,y)){
-    if(nao_foi_revelada(x,y)){
-      if(map[x][y]._eh_vazia()){
-        revelar(map, x-1, y-1);
-        revelar(map, x  , y-1);
-        revelar(map, x+1, y-1);
-
-        revelar(map, x  , y+1);
-        revelar(map, x  , y-1);
-        
-        revelar(map, x-1, y+1);
-        revelar(map, x  , y+1);
-        revelar(map, x+1, y+1);
-        map[x][y].mostrar(x,y)
-      } else if(map[x][y]._eh_numero()){
-        map[x][y].mostrar(x,y)
-      }
-    }
-  }
-}
-*/
-//**************************************************************************************
 
 // metodo principal para realizar logica da partida
 bool play(Difficulty level)
@@ -325,22 +300,6 @@ bool play(Difficulty level)
 
       if (action == 'r')
       {
-        /*      
-        if (game.level == Difficulty::intermediary && jogada == 1)
-        {
-          
-
-
-        }
-
-        if (game.level == Difficulty::advanced && jogada == 1)
-        {
-          
-          
-
-        }
-        */
-        // checar se existe bomba, se sim, finaliza jogo com derrota e revela todas as celulas do mapa
         if (has_mine(game.map, x, y))
         { 
           reveal_all_map(game.map);
@@ -350,9 +309,15 @@ bool play(Difficulty level)
         }
         else
         {
-          // caso nao seja encontrada uma bomba, e exibida celula
-          game.map.cells[y][x].is_hidden = false;
-          
+          // caso nao seja encontrada uma bomba, eh exibida celula
+          if (count_nested_mines(game.map, x, y) > 0)
+          {
+            game.map.cells[y][x].is_hidden = false;
+          }
+          else
+          {
+            revelar(game, x, y);
+          }
           // ao fim, checa se usuario venceu.
           won = check_user_won(game.map);
           // Se sim, encerra o programa. Senao, continua o fluxo
@@ -582,3 +547,76 @@ void put_takeoff_flag(Game &game, int x, int y)
   }
 }
 
+// *** revelar celular vazias ***
+
+void revelar(Game &game, int x, int y)
+{
+  if(is_inside_map(game.map, x, y))
+  {
+    if (game.map.cells[y][x].is_hidden)
+    {
+      if (count_nested_mines(game.map, x, y) == 0
+          && game.map.cells[y][x].has_mine == false)
+      {
+        
+        game.map.cells[y][x].is_hidden = false;
+
+        //revelar(game, x-1 , y-1);
+        revelar(game, x-1 , y  );
+        //revelar(game, x-1 , y+1);
+
+        revelar(game, x  , y-1);
+        revelar(game, x  , y+1);
+        
+        //revelar(game, x+1 , y-1);
+        revelar(game, x+1 , y  );
+        //revelar(game, x+1 , y+1);
+                
+      } 
+      else if(count_nested_mines(game.map, x, y) > 0 
+              && game.map.cells[y][x].has_mine == false)
+      {
+        game.map.cells[y][x].is_hidden = false;
+      }
+    }
+  }
+}
+
+//**************************************
+
+//void revelar(Map map, int x, int y){
+  //if(eh_valida_posicao(x,y)){
+    //if(nao_foi_revelada(x,y)){
+      //if(map[x][y]._eh_vazia()){
+        //revelar(map, x-1, y-1);
+        //revelar(map, x  , y-1);
+        //revelar(map, x+1, y-1);
+
+        //revelar(map, x  , y+1);
+        //revelar(map, x  , y-1);
+        
+        //revelar(map, x-1, y+1);
+        //revelar(map, x  , y+1);
+        //revelar(map, x+1, y+1);
+        //map[x][y].mostrar(x,y)
+      //} else if(map[x][y]._eh_numero()){
+        //map[x][y].mostrar(x,y)
+      //}
+    //}
+  //}
+//}
+
+//**************************************
+
+/*
+        revelar(game, x-1 , y-1);
+        revelar(game, x-1 , y  );
+        revelar(game, x-1 , y+1);
+
+        revelar(game, x  , y-1);
+        revelar(game, x  , y+1);
+        
+        revelar(game, x+1 , y-1);
+        revelar(game, x+1 , y  );
+        revelar(game, x+1 , y+1);
+*/
