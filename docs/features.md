@@ -16,7 +16,7 @@
 
 [X] Revelar número
 
-[X] Revelar posição vazia
+[X] Revelar posições vazias
 
 [X] Marcar/Desmarcar posição com flag
 
@@ -25,8 +25,6 @@
 [X] Gravar/recuperar nível de dificuldade
 
 [X] Registro dos 10 melhores tempos/jogadores
-
-[ ] Revelar posições vazias adjacentes
 
 [ ] Primeira ação sempre revela uma posição vazia (Intermediário)
 

@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat May 14 12:57:07 2022
+# Make data base, printed on Sat May 14 15:21:34 2022
 
 # Variables
 
@@ -23,12 +23,11 @@ USERPROFILE = C:\Users\arqan
 # environment
 LOCALAPPDATA = C:\Users\arqan\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-07d9649c-ce1c-4174-a926-6a953dc54ab9-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-178dbfe8-9fc1-46a2-b7c6-8779d786019f-sock
 # environment
 VSCODE_CWD = C:\Users\arqan\AppData\Local\Programs\Microsoft VS Code
 # environment
-CHOCOLATEYINSTALL = C: 
-\ProgramData\chocolatey
+CHOCOLATEYINSTALL = C:\ProgramData\chocolatey
 # environment
 SYSTEMROOT = C:\WINDOWS
 # environment
@@ -40,7 +39,7 @@ MAKE_COMMAND := C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_7376_YNOTAKQVSCMFNSHV
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_12080_DAYNSWXABVTGSHTQ
 # environment
 ONEDRIVECOMMERCIAL = D:\OneDrive - ufrn.edu.br
 # environment
@@ -98,7 +97,7 @@ MAKEFILE_LIST := Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 7376
+VSCODE_PID = 12080
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # automatic
@@ -178,7 +177,8 @@ USERDOMAIN_ROAMINGPROFILE = LAPTOP-ODUHE9LH
 # environment
 NUMBER_OF_PROCESSORS = 8
 # environment
-PUBLIC = C:\Users\Public
+PUBLIC = C:\Us 
+ers\Public
 # environment
 ASL.LOG = Destination=file
 # environment
@@ -252,8 +252,7 @@ game:
 	g++ -c src/main.cpp -o dist/main.o
 
 app: msg dist game main
-#  
- Implicit rule search has not been done.
+#  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
@@ -311,6 +310,6 @@ main:
 # strcache performance: lookups = 34 / hit rate = 47%
 # hash-table stats:
 # Load=18/8192=0%, Rehash=0, Collisions=0/34=0%
-# Finished Make data base on Sat May 14 12:57:07 2022
+# Finished Make data base on Sat May 14 15:21:34 2022
 
  
