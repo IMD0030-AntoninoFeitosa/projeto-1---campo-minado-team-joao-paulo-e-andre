@@ -549,7 +549,6 @@ void put_takeoff_flag(Game &game, int x, int y)
 }
 
 // *** revelar celular vazias ***
-
 void revelar(Game &game, int x, int y)
 {
   if(is_inside_map(game.map, x, y))
@@ -562,27 +561,19 @@ void revelar(Game &game, int x, int y)
         
         game.map.cells[y][x].is_hidden = false;
 
-        int dx, dy;
-        dx = x-1; dy = y-1; //NO
-        if(is_inside_map(game.map, dx , dy) && count_nested_mines(game.map, dx, dy) > 0 && game.map.cells[dy][dx].has_mine == false)
+        for (int j = -1; j <= 1; j+=2)
         {
-          game.map.cells[dy][dx].is_hidden = false;
-        }; 
-        dx = x-1; dy = y+1; //NE
-        if(is_inside_map(game.map, dx , dy) && count_nested_mines(game.map, dx, dy) > 0 && game.map.cells[dy][dx].has_mine == false)
-        {
-          game.map.cells[dy][dx].is_hidden = false;
-        }; 
-        dx = x+1; dy = y-1; //SO
-        if(is_inside_map(game.map, dx , dy) && count_nested_mines(game.map, dx, dy) > 0 && game.map.cells[dy][dx].has_mine == false)
-        {
-          game.map.cells[dy][dx].is_hidden = false;
-        };
-        dx = x+1; dy = y+1; //SE
-        if(is_inside_map(game.map, dx , dy) && count_nested_mines(game.map, dx, dy) > 0 && game.map.cells[dy][dx].has_mine == false)
-        {
-          game.map.cells[dy][dx].is_hidden = false;
-        }; 
+          for (int i = -1; i <= 1; i+=2)
+          {
+            int dx = x + i;
+            int dy = y + j;
+
+            if (is_inside_map(game.map, dx , dy) && count_nested_mines(game.map, dx, dy) > 0 && game.map.cells[dy][dx].has_mine == false)
+            {
+              game.map.cells[dy][dx].is_hidden = false;
+            }
+          }
+        }
 
         revelar(game, x-1 , y  ); //N
         revelar(game, x   , y-1); //E
@@ -603,38 +594,3 @@ void revelar(Game &game, int x, int y)
     }
   }
 }
-
-/*
-void revelar(Game &game, int x, int y)
-{
-  if(is_inside_map(game.map, x, y))
-  {
-    if (game.map.cells[y][x].is_hidden)
-    {
-      if (count_nested_mines(game.map, x, y) == 0
-          && game.map.cells[y][x].has_mine == false)
-      {
-        
-        game.map.cells[y][x].is_hidden = false;
-
-        //revelar(game, x-1 , y-1);
-        revelar(game, x-1 , y  );
-        //revelar(game, x-1 , y+1);
-
-        revelar(game, x  , y-1);
-        revelar(game, x  , y+1);
-        
-        //revelar(game, x+1 , y-1);
-        revelar(game, x+1 , y  );
-        //revelar(game, x+1 , y+1);
-                
-      } 
-      else if(count_nested_mines(game.map, x, y) > 0 
-              && game.map.cells[y][x].has_mine == false)
-      {
-        game.map.cells[y][x].is_hidden = false;
-      }
-    }
-  }
-}
-*/
