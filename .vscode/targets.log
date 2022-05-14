@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat May 14 10:24:43 2022
+# Make data base, printed on Sat May 14 12:57:07 2022
 
 # Variables
 
@@ -23,11 +23,12 @@ USERPROFILE = C:\Users\arqan
 # environment
 LOCALAPPDATA = C:\Users\arqan\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-f931f199-fe8b-40a2-afb3-b4f9e9a966f0-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-07d9649c-ce1c-4174-a926-6a953dc54ab9-sock
 # environment
 VSCODE_CWD = C:\Users\arqan\AppData\Local\Programs\Microsoft VS Code
 # environment
-CHOCOLATEYINSTALL = C:\ProgramData\chocolatey
+CHOCOLATEYINSTALL = C: 
+\ProgramData\chocolatey
 # environment
 SYSTEMROOT = C:\WINDOWS
 # environment
@@ -39,7 +40,7 @@ MAKE_COMMAND := C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_18560_NPSRNQGTCREQCYAH
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_7376_YNOTAKQVSCMFNSHV
 # environment
 ONEDRIVECOMMERCIAL = D:\OneDrive - ufrn.edu.br
 # environment
@@ -77,7 +78,7 @@ CURDIR := c:/Users/arqan/OneDrive/�rea de Trabalho/GIT/projeto-1---campo-minad
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # automatic
 *D = $(patsubst %/,%,$(patsubst %\,%,$(dir $*)))
 # environment
@@ -97,7 +98,7 @@ MAKEFILE_LIST := Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 18560
+VSCODE_PID = 7376
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # automatic
@@ -213,8 +214,7 @@ SESSIONNAME = Console
 # environment
 PROCESSOR_REVISION = 9e09
 # environment
-PROCESSO 
-R_IDENTIFIER = Intel64 Family 6 Model 158 Stepping 9, GenuineIntel
+PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 158 Stepping 9, GenuineIntel
 # variable set hash-table stats:
 # Load=101/1024=10%, Rehash=0, Collisions=10/128=8%
 
@@ -224,9 +224,9 @@ R_IDENTIFIER = Intel64 Family 6 Model 158 Stepping 9, GenuineIntel
 
 # Directories
 
-# . (key c:/Users/arqan/OneDrive/�rea de Trabalho/GIT/projeto-1---campo-minado-team-joao-paulo-e-andre_FORK, mtime 1652534674): 9 files, no impossibilities.
+# . (key c:/Users/arqan/OneDrive/�rea de Trabalho/GIT/projeto-1---campo-minado-team-joao-paulo-e-andre_FORK, mtime 1652534885): 10 files, no impossibilities.
 
-# 9 files, no impossibilities in 1 directories.
+# 10 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -252,7 +252,8 @@ game:
 	g++ -c src/main.cpp -o dist/main.o
 
 app: msg dist game main
-#  Implicit rule search has not been done.
+#  
+ Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
@@ -307,9 +308,9 @@ main:
 # strcache buffers: 1 (0) / strings = 18 / storage = 110 B / avg = 6 B
 # current buf: size = 8174 B / used = 110 B / count = 18 / avg = 6 B
 
-# strcache performance: lookups = 33 / hit rate = 45%
+# strcache performance: lookups = 34 / hit rate = 47%
 # hash-table stats:
-# Load=18/8192=0%, Rehash=0, Collisions=0/33=0%
-# Finished Make data base on Sat May 14 10:24:43 2022
+# Load=18/8192=0%, Rehash=0, Collisions=0/34=0%
+# Finished Make data base on Sat May 14 12:57:07 2022
 
  

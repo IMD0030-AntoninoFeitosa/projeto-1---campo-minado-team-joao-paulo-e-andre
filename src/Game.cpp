@@ -309,13 +309,14 @@ bool play(Difficulty level)
         }
         else
         {
-          // caso nao seja encontrada uma bomba, eh exibida celula
+          // caso nao seja encontrada um numero, eh exibida celula
           if (count_nested_mines(game.map, x, y) > 0)
           {
             game.map.cells[y][x].is_hidden = false;
           }
           else
           {
+            //caso seja uma célula vazia, revela as vizinhas
             revelar(game, x, y);
           }
           // ao fim, checa se usuario venceu.
@@ -581,42 +582,3 @@ void revelar(Game &game, int x, int y)
     }
   }
 }
-
-//**************************************
-
-//void revelar(Map map, int x, int y){
-  //if(eh_valida_posicao(x,y)){
-    //if(nao_foi_revelada(x,y)){
-      //if(map[x][y]._eh_vazia()){
-        //revelar(map, x-1, y-1);
-        //revelar(map, x  , y-1);
-        //revelar(map, x+1, y-1);
-
-        //revelar(map, x  , y+1);
-        //revelar(map, x  , y-1);
-        
-        //revelar(map, x-1, y+1);
-        //revelar(map, x  , y+1);
-        //revelar(map, x+1, y+1);
-        //map[x][y].mostrar(x,y)
-      //} else if(map[x][y]._eh_numero()){
-        //map[x][y].mostrar(x,y)
-      //}
-    //}
-  //}
-//}
-
-//**************************************
-
-/*
-        revelar(game, x-1 , y-1);
-        revelar(game, x-1 , y  );
-        revelar(game, x-1 , y+1);
-
-        revelar(game, x  , y-1);
-        revelar(game, x  , y+1);
-        
-        revelar(game, x+1 , y-1);
-        revelar(game, x+1 , y  );
-        revelar(game, x+1 , y+1);
-*/
