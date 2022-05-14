@@ -555,8 +555,7 @@ void revelar(Game &game, int x, int y)
   {
     if (game.map.cells[y][x].is_hidden)
     {
-      if (count_nested_mines(game.map, x, y) == 0 
-          && game.map.cells[y][x].has_mine == false)
+      if (count_nested_mines(game.map, x, y) == 0 && game.map.cells[y][x].has_mine == false)
       {
         
         game.map.cells[y][x].is_hidden = false;
@@ -586,8 +585,7 @@ void revelar(Game &game, int x, int y)
         //revelar(game, x+1 , y+1); //SE
                 
       } 
-      else if(count_nested_mines(game.map, x, y) > 0 
-              && game.map.cells[y][x].has_mine == false)
+      else if(count_nested_mines(game.map, x, y) > 0 && game.map.cells[y][x].has_mine == false)
       {
         game.map.cells[y][x].is_hidden = false;
       }
