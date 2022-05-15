@@ -156,8 +156,7 @@ void fill_with_count_nested_mines(Map &map)
 }
 
 // cria mapa do jogo
-Map create_map(int height, int width, int total_mines,
-              int x, int y)
+Map create_map(int height, int width, int total_mines, int x, int y)
 {
   Map map;
   map.height = height;
@@ -313,10 +312,9 @@ bool play(Difficulty level)
       if (action == 'r')
       {
         // cria mapa novo baseado nas restricoes de primeira jogada (intermediário e avançado)
-        if (jogada == 0)
+        if (jogada == 0 && (game.level == Difficulty::intermediary || game.level == Difficulty::advanced))
         {
-          game.map = create_map(game.map.height, game.map.width, 
-                    game.total_mines, x, y);
+          game.map = create_map(game.map.height, game.map.width, game.total_mines, x, y);
           jogada++;
         }
 
@@ -327,6 +325,7 @@ bool play(Difficulty level)
           won = false;
           end = true;
         }
+
         else
         {
           // caso seja encontrada um numero, eh exibida celula
