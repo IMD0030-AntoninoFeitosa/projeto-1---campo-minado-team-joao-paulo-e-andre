@@ -2,9 +2,9 @@
 
 O trabalho é em dupla (não pode ser individual) e pode ser submetido via SIGAA (arquivo compactado com todo o código-fonte) ou via GitHub Classroom.
 
-Integrante 1: ANDRE AUGUSTO FERNANDES - Matrícula: 20200050162
+Integrante 1: André Augusto Fernandes - Matrícula: 20200050162
 
-Integrante 2: JOAO PAULO PEREIRA DE MEDEIROS - Matrícula: 20210053293 
+Integrante 2: João Paulo Medeiros - Matrícula: 20210053293 
 
 ## O Jogo
 
