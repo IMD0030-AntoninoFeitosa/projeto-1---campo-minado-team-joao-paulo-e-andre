@@ -49,10 +49,10 @@ bool play(Difficulty level);
 // end the game and stores player information to the ranking if they win.
 void end_game(bool won, int seconds);
 
-int remove_nested_mines(Game &game, int px, int py);
-
+// colocar e retirar flag
 void put_takeoff_flag(Game &game, int x, int y);
 
+//revelar células vazias
 void revelar(Game &game, int x, int y);
 
 #endif
