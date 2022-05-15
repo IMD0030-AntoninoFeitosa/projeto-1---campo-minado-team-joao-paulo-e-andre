@@ -156,7 +156,8 @@ void fill_with_count_nested_mines(Map &map)
 }
 
 // cria mapa do jogo
-Map create_map(int height, int width, int total_mines)
+Map create_map(int height, int width, int total_mines,
+              int x, int y)
 {
   Map map;
   map.height = height;
@@ -176,7 +177,18 @@ Map create_map(int height, int width, int total_mines)
     map.cells.push_back(cells);
   }
 
-  fill_with_mines(map, total_mines);
+  if (total_mines == 40){
+    fill_with_mines_intermediary(map, total_mines, x, y);
+  }
+
+  //if (total_mines == 100){
+    // implementar código para preencher minas no nível avançado
+  //}
+
+  else
+  {
+    fill_with_mines(map, total_mines);
+  }
 
   fill_with_count_nested_mines(map);
 
@@ -205,7 +217,7 @@ Game start_game(Difficulty level)
     total_mines = 100;
   }
 
-  game.map = create_map(height, width, total_mines);
+  game.map = create_map(height, width, total_mines, 0, 0);
   game.level = level;
   game.total_mines = total_mines;
 
@@ -262,7 +274,7 @@ bool play(Difficulty level)
   bool end = false;
   bool won = false;
   int x, y = 0;
-  int jogada = 1;
+  int jogada = 0;
 
   Game game = start_game(level);
 
@@ -300,6 +312,14 @@ bool play(Difficulty level)
 
       if (action == 'r')
       {
+        // cria mapa novo baseado nas restricoes de primeira jogada (intermediário e avançado)
+        if (jogada == 0)
+        {
+          game.map = create_map(game.map.height, game.map.width, 
+                    game.total_mines, x, y);
+          jogada++;
+        }
+
         if (has_mine(game.map, x, y))
         { 
           reveal_all_map(game.map);
@@ -309,7 +329,7 @@ bool play(Difficulty level)
         }
         else
         {
-          // caso nao seja encontrada um numero, eh exibida celula
+          // caso seja encontrada um numero, eh exibida celula
           if (count_nested_mines(game.map, x, y) > 0)
           {
             game.map.cells[y][x].is_hidden = false;
@@ -548,7 +568,7 @@ void put_takeoff_flag(Game &game, int x, int y)
   }
 }
 
-// *** revelar celular vazias ***
+// *** revelar celulas vazias ***
 void revelar(Game &game, int x, int y)
 {
   if(is_inside_map(game.map, x, y))
@@ -592,3 +612,55 @@ void revelar(Game &game, int x, int y)
     }
   }
 }
+
+// *** preencher com minas nível intermediário ***
+void fill_with_mines_intermediary(Map &map, int total_mines, int x, int y)
+{
+  std::vector<std::pair<int, int>> positions;
+
+  for (int j = -1; j <= 1; j++)
+  {
+    for (int i = -1; i <= 1; i++)
+    {
+      int dx = x + i;
+      int dy = y + j;
+
+      if (is_inside_map(map, dx , dy))
+      {
+        positions.push_back({dx,dy});
+      }
+    }
+  }
+  
+  std::srand(time(NULL));
+
+  int count_mines = 0;
+
+  while (count_mines < total_mines)
+  {
+    int random = rand() % (map.height * map.width);
+
+    int h = random / map.height;
+
+    int w = random % map.width;
+
+    int cont_posicoes = 0;
+
+    for (int i = 0 ; i < positions.size() ; i++)
+    {
+      if (positions[i].first == h && positions[i].second == w)
+      {
+        cont_posicoes++;
+      }
+    }
+
+    if (cont_posicoes == 0 && map.cells[h][w].has_mine == false)
+    {
+      map.cells[h][w].has_mine = true;
+      count_mines++;
+    }    
+  }
+}
+
+// *** preencher com minas nível avançado ***
+//void fill_with_mines_advanced()
