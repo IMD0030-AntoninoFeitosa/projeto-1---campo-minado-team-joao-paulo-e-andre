@@ -13,4 +13,4 @@ Portanto, basta rodar em seu terminal o comando:
 `make app`
 
 ## Autores
-João Paulo Medeiros e André Fernandes
+João Paulo Medeiros e André Augusto Fernandes
