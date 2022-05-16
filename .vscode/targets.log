@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat May 14 15:21:34 2022
+# Make data base, printed on Sun May 15 13:42:16 2022
 
 # Variables
 
@@ -23,7 +23,7 @@ USERPROFILE = C:\Users\arqan
 # environment
 LOCALAPPDATA = C:\Users\arqan\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-178dbfe8-9fc1-46a2-b7c6-8779d786019f-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-2f21d6de-7215-40f5-a357-daf7217128a5-sock
 # environment
 VSCODE_CWD = C:\Users\arqan\AppData\Local\Programs\Microsoft VS Code
 # environment
@@ -39,7 +39,7 @@ MAKE_COMMAND := C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_12080_DAYNSWXABVTGSHTQ
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_18600_UGJWRHPCPKMGUENE
 # environment
 ONEDRIVECOMMERCIAL = D:\OneDrive - ufrn.edu.br
 # environment
@@ -73,7 +73,7 @@ MAKEFLAGS = pqrR
 # environment
 ONEDRIVE = D:\OneDrive - ufrn.edu.br
 # makefile
-CURDIR := c:/Users/arqan/OneDrive/�rea de Trabalho/GIT/projeto-1---campo-minado-team-joao-paulo-e-andre_FORK
+CURDIR := c:/Users/arqan/OneDrive/�rea de Trabalho/GIT/projeto-1---campo-minado-team-joao-paulo-e-andre-FORK-2
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
@@ -97,7 +97,7 @@ MAKEFILE_LIST := Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 12080
+VSCODE_PID = 18600
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # automatic
@@ -177,8 +177,7 @@ USERDOMAIN_ROAMINGPROFILE = LAPTOP-ODUHE9LH
 # environment
 NUMBER_OF_PROCESSORS = 8
 # environment
-PUBLIC = C:\Us 
-ers\Public
+PUBLIC = C:\Users\Public
 # environment
 ASL.LOG = Destination=file
 # environment
@@ -224,9 +223,9 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 158 Stepping 9, GenuineIntel
 
 # Directories
 
-# . (key c:/Users/arqan/OneDrive/�rea de Trabalho/GIT/projeto-1---campo-minado-team-joao-paulo-e-andre_FORK, mtime 1652534885): 10 files, no impossibilities.
+# . (key c:/Users/arqan/OneDrive/�rea de Trabalho/GIT/projeto-1---campo-minado-team-joao-paulo-e-andre-FORK-2, mtime 1652625784): 9 files, no impossibilities.
 
-# 10 files, no impossibilities in 1 directories.
+# 9 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -264,7 +263,7 @@ reload: app
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-14 10:24:34
+#  Last modified 2022-05-15 11:43:04
 #  File has been updated.
 #  Successfully updated.
 
@@ -272,7 +271,8 @@ msg:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 4):
+#  recipe  
+to execute (from 'Makefile', line 4):
 	@echo Hello, we're getting things ready for ya...
 
 # Not a target:
@@ -307,9 +307,9 @@ main:
 # strcache buffers: 1 (0) / strings = 18 / storage = 110 B / avg = 6 B
 # current buf: size = 8174 B / used = 110 B / count = 18 / avg = 6 B
 
-# strcache performance: lookups = 34 / hit rate = 47%
+# strcache performance: lookups = 33 / hit rate = 45%
 # hash-table stats:
-# Load=18/8192=0%, Rehash=0, Collisions=0/34=0%
-# Finished Make data base on Sat May 14 15:21:34 2022
+# Load=18/8192=0%, Rehash=0, Collisions=0/33=0%
+# Finished Make data base on Sun May 15 13:42:16 2022
 
  

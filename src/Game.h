@@ -55,4 +55,10 @@ void put_takeoff_flag(Game &game, int x, int y);
 //revelar células vazias
 void revelar(Game &game, int x, int y);
 
+// *** preencher com minas nível intermediário ***
+void fill_with_mines_intermediary(Map &map, int total_mines, int x, int y);
+
+// *** preencher com minas nível avançado ***
+//void fill_with_mines_advanced()
+
 #endif
