@@ -28,7 +28,7 @@
 
 [X] Primeira ação sempre revela uma posição vazia (Intermediário)
 
-[ ] Primeira ação sempre revela umnúmero (Avançado)
+[ ] Primeira ação sempre revela um número (Avançado)
 
 ## Game Over
 [X] Ao clicar na mina, mostra-se mensagem de que user perdeu e jogo é encerrado;
