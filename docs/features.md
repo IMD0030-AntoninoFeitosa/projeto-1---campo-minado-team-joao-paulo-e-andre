@@ -26,7 +26,7 @@
 
 [X] Registro dos 10 melhores tempos/jogadores
 
-[ ] Primeira ação sempre revela uma posição vazia (Intermediário)
+[X] Primeira ação sempre revela uma posição vazia (Intermediário)
 
 [ ] Primeira ação sempre revela umnúmero (Avançado)
 
