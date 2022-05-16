@@ -288,7 +288,7 @@ bool play(Difficulty level)
   while (end == false)
   {
 
-    std::cout << std::endl << "Tempo: " << time(NULL) - tempo_1 << " segundos :)" << std::endl;
+    std::cout << std::endl << "Time: " << time(NULL) - tempo_1 << " seconds :)" << std::endl;
 
     show_map(game.map);
 
@@ -333,7 +333,7 @@ bool play(Difficulty level)
         { 
           reveal_all_map(game.map);
           show_map(game.map);
-          std::cout << std::endl << "Tempo: " << time(NULL) - tempo_1 << " segundos :(" << std::endl;
+          std::cout << std::endl << "Time: " << time(NULL) - tempo_1 << " seconds :(" << std::endl;
           won = false;
           end = true;
         }
