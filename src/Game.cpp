@@ -274,11 +274,17 @@ bool play(Difficulty level)
   bool won = false;
   int x, y = 0;
   int jogada = 0;
+  int tempo_1 = time(NULL);
+  int tempo_2;
 
   Game game = start_game(level);
 
   while (end == false)
   {
+
+    tempo_2 = time(NULL);
+    std::cout << std::endl << "Tempo: " << tempo_2 - tempo_1 << " segundos" << std::endl;
+
     show_map(game.map);
 
     std::cout << std::endl;
@@ -322,6 +328,8 @@ bool play(Difficulty level)
         { 
           reveal_all_map(game.map);
           show_map(game.map);
+          tempo_2 = time(NULL);
+          std::cout << std::endl << "Tempo: " << tempo_2 - tempo_1 << " segundos" << std::endl;
           won = false;
           end = true;
         }
