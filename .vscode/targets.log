@@ -9,7 +9,7 @@ make: *** No rule to make target 'all'.  Stop.
 # There is NO WARRANTY, to the extent permitted by law.
  
 
-# Make data base, printed on Mon May 16 08:49:45 2022
+# Make data base, printed on Mon May 16 13:03:53 2022
 
 # Variables
 
@@ -24,7 +24,7 @@ USERPROFILE = C:\Users\arqan
 # environment
 LOCALAPPDATA = C:\Users\arqan\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-b9b6a297-52ae-4031-bd80-928b48ceda69-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-be1bed67-c235-465b-a308-08e94a59db16-sock
 # environment
 VSCODE_CWD = C:\Users\arqan\AppData\Local\Programs\Microsoft VS Code
 # environment
@@ -40,7 +40,7 @@ MAKE_COMMAND := C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_18312_TOUGKFTFFWLXLUYH
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_8704_ONXUGOMQGBWWYTCC
 # environment
 ONEDRIVECOMMERCIAL = D:\OneDrive - ufrn.edu.br
 # environment
@@ -58,7 +58,8 @@ VSCODE_LOG_STACK = false
 # automatic
 %F = $(notdir $%)
 # environment
-VSCODE_CODE_CACHE_PATH = C:\Users\arqan\AppData\Roaming\Code\CachedData\da15b6fd3ef856477bf6f4fb29ba1b7af717770d
+VSCODE_CODE_CACHE_PATH = C:\Users\arqan\AppData\Roaming\Code\CachedData\da15b6fd3ef856477bf6f4fb29ba1 
+b7af717770d
 # environment
 LANG = C
 # default
@@ -74,11 +75,11 @@ MAKEFLAGS = pqrR
 # environment
 ONEDRIVE = D:\OneDrive - ufrn.edu.br
 # makefile
-CURDIR := c:/Users/arqan/OneDrive/�rea de Trabalho/GIT/projeto-1---campo-minado-team-joao-paulo-e-andre-FORK-2
+CURDIR := c:/Users/arqan/OneDrive/�rea de Trabalho/GIT/projeto-1---campo-minado-team-joao-paulo-e-andre
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # automatic
 *D = $(patsubst %/,%,$(patsubst %\,%,$(dir $*)))
 # environment
@@ -98,11 +99,10 @@ MAKEFILE_LIST := Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 18312
+VSCODE_PID = 8704
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
-# automat 
-ic
+# automatic
 *F = $(notdir $*)
 # automatic
 <D = $(patsubst %/,%,$(patsubst %\,%,$(dir $<)))
@@ -215,7 +215,8 @@ SESSIONNAME = Console
 # environment
 PROCESSOR_REVISION = 9e09
 # environment
-PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 158 Stepping 9, GenuineIntel
+PROCESSOR_IDENT 
+IFIER = Intel64 Family 6 Model 158 Stepping 9, GenuineIntel
 # variable set hash-table stats:
 # Load=101/1024=10%, Rehash=0, Collisions=10/128=8%
 
@@ -225,7 +226,7 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 158 Stepping 9, GenuineIntel
 
 # Directories
 
-# . (key c:/Users/arqan/OneDrive/�rea de Trabalho/GIT/projeto-1---campo-minado-team-joao-paulo-e-andre-FORK-2, mtime 1652635273): 10 files, no impossibilities.
+# . (key c:/Users/arqan/OneDrive/�rea de Trabalho/GIT/projeto-1---campo-minado-team-joao-paulo-e-andre, mtime 1652712145): 10 files, no impossibilities.
 
 # 10 files, no impossibilities in 1 directories.
 
@@ -265,7 +266,7 @@ reload: app
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-15 11:43:04
+#  Last modified 2022-05-16 11:41:52
 #  File has been updated.
 #  Successfully updated.
 
@@ -311,6 +312,6 @@ main:
 # strcache performance: lookups = 34 / hit rate = 47%
 # hash-table stats:
 # Load=18/8192=0%, Rehash=0, Collisions=0/34=0%
-# Finished Make data base on Mon May 16 08:49:45 2022
+# Finished Make data base on Mon May 16 13:03:53 2022
 
  
