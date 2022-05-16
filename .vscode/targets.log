@@ -7,8 +7,9 @@ make: *** No rule to make target 'all'.  Stop.
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
+ 
 
-# Make data base, printed on Sun May 15 20:38:03 2022
+# Make data base, printed on Mon May 16 08:49:45 2022
 
 # Variables
 
@@ -23,7 +24,7 @@ USERPROFILE = C:\Users\arqan
 # environment
 LOCALAPPDATA = C:\Users\arqan\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-95b4dba6-7ccd-4fc5-a3f0-6fb79fba9dda-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-b9b6a297-52ae-4031-bd80-928b48ceda69-sock
 # environment
 VSCODE_CWD = C:\Users\arqan\AppData\Local\Programs\Microsoft VS Code
 # environment
@@ -39,7 +40,7 @@ MAKE_COMMAND := C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_17548_OAZDIMOPTKEMZZMN
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_18312_TOUGKFTFFWLXLUYH
 # environment
 ONEDRIVECOMMERCIAL = D:\OneDrive - ufrn.edu.br
 # environment
@@ -97,10 +98,11 @@ MAKEFILE_LIST := Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 17548
+VSCODE_PID = 18312
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
-# automatic
+# automat 
+ic
 *F = $(notdir $*)
 # automatic
 <D = $(patsubst %/,%,$(patsubst %\,%,$(dir $<)))
@@ -309,6 +311,6 @@ main:
 # strcache performance: lookups = 34 / hit rate = 47%
 # hash-table stats:
 # Load=18/8192=0%, Rehash=0, Collisions=0/34=0%
-# Finished Make data base on Sun May 15 20:38:03 2022
+# Finished Make data base on Mon May 16 08:49:45 2022
 
  

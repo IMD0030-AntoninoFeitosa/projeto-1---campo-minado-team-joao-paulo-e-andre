@@ -176,19 +176,26 @@ Map create_map(int height, int width, int total_mines, int x, int y)
     map.cells.push_back(cells);
   }
 
-  if (total_mines == 40){
-    fill_with_mines_intermediary(map, total_mines, x, y);
-  }
-
-  //if (total_mines == 100){
-    // implementar código para preencher minas no nível avançado
-  //}
-
-  else
+  if (total_mines == 10)
   {
     fill_with_mines(map, total_mines);
   }
 
+  if (total_mines == 40)
+  {
+    fill_with_mines_intermediary(map, total_mines, x, y);
+  }
+
+  if (total_mines == 100)
+  {
+    fill_with_mines_advanced(map, total_mines, x, y);
+  }
+/*
+  else
+  {
+    fill_with_mines(map, total_mines);
+  }
+*/
   fill_with_count_nested_mines(map);
 
   return map;
@@ -275,15 +282,13 @@ bool play(Difficulty level)
   int x, y = 0;
   int jogada = 0;
   int tempo_1 = time(NULL);
-  int tempo_2;
 
   Game game = start_game(level);
 
   while (end == false)
   {
 
-    tempo_2 = time(NULL);
-    std::cout << std::endl << "Tempo: " << tempo_2 - tempo_1 << " segundos" << std::endl;
+    std::cout << std::endl << "Tempo: " << time(NULL) - tempo_1 << " segundos" << std::endl;
 
     show_map(game.map);
 
@@ -328,8 +333,7 @@ bool play(Difficulty level)
         { 
           reveal_all_map(game.map);
           show_map(game.map);
-          tempo_2 = time(NULL);
-          std::cout << std::endl << "Tempo: " << tempo_2 - tempo_1 << " segundos" << std::endl;
+          std::cout << std::endl << "Tempo: " << time(NULL) - tempo_1 << " segundos" << std::endl;
           won = false;
           end = true;
         }
@@ -634,7 +638,7 @@ void fill_with_mines_intermediary(Map &map, int total_mines, int x, int y)
 
       if (is_inside_map(map, dx , dy))
       {
-        positions.push_back({dx,dy});
+        positions.push_back({dy,dx});
       }
     }
   }
@@ -670,4 +674,57 @@ void fill_with_mines_intermediary(Map &map, int total_mines, int x, int y)
 }
 
 // *** preencher com minas nível avançado ***
-//void fill_with_mines_advanced()
+void fill_with_mines_advanced(Map &map, int total_mines, int x, int y)
+{
+  std::vector<std::pair<int, int>> positions_a;
+
+  for (int j = -1; j <= 1; j++)
+  {
+    for (int i = -1; i <= 1; i++)
+    {
+      int dx = x + i;
+      int dy = y + j;
+
+      if (is_inside_map(map, dx , dy))
+      {
+        positions_a.push_back({dy,dx});
+      }
+    }
+  }
+  
+  std::srand(time(NULL));
+
+  int count_mines = 0;
+
+  int cont_posicoes = 0;
+
+  while (count_mines < total_mines)
+  {
+    int random1 = rand() % (map.height * map.height);
+    int random2 = rand() % (map.width * map.width);
+
+    int h = random1 / map.height;
+
+    int w = random2 / map.width;
+
+    if (cont_posicoes == 0)
+    {
+      for (int i = 0 ; i < positions_a.size() ; i++ )
+      {
+        if (( x != w && y != h ) && ( positions_a[i].first == h && positions_a[i].second == w ))
+        {
+          map.cells[h][w].has_mine = true;
+          cont_posicoes++;
+          count_mines++;
+        }
+      }
+    }
+
+    if (cont_posicoes > 0 && ( x != w && y != h ) && map.cells[h][w].has_mine == false )
+    {
+      map.cells[h][w].has_mine = true;
+      count_mines++;
+    }    
+  }
+}
+
