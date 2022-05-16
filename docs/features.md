@@ -26,9 +26,9 @@
 
 [X] Registro dos 10 melhores tempos/jogadores
 
-[ ] Primeira ação sempre revela uma posição vazia (Intermediário)
+[X] Primeira ação sempre revela uma posição vazia (Intermediário)
 
-[ ] Primeira ação sempre revela umnúmero (Avançado)
+[X] Primeira ação sempre revela umnúmero (Avançado)
 
 ## Game Over
 [X] Ao clicar na mina, mostra-se mensagem de que user perdeu e jogo é encerrado;
