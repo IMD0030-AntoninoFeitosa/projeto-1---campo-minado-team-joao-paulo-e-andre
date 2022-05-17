@@ -67,4 +67,7 @@ std::vector <std::pair<int,int>> pos_flags_before_first_reveal (Map map);
 // repor flags após primeiro reveal
 void reinsert_flags (Game &game , std::vector <std::pair<int,int>> posicoes);
 
+// hack para revelar todas as células sem minas
+void win_game ( Game &game );
+
 #endif

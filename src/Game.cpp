@@ -287,9 +287,10 @@ bool play(Difficulty level)
   bool won = false;
   int x, y = 0;
   int jogada = 0;
-  int tempo_1 = time(NULL);
 
   Game game = start_game(level);
+
+  int tempo_1 = time(NULL);
 
   while (end == false)
   {
@@ -301,6 +302,16 @@ bool play(Difficulty level)
     std::cout << std::endl;
     std::cout << "Type your action [r/f]: ";
     std::cin >> action;
+
+    //hack para vencer jogo
+    if (action == 'w')
+    {
+      std::cout << "\nYou cheat :/" << std::endl;
+      win_game ( game );
+      show_map( game.map );
+      won = true;
+      end = true;
+    } 
 
     if (is_reveal_action(action) || is_flag_action(action))
     {
@@ -380,7 +391,7 @@ bool play(Difficulty level)
     }
     else
     {
-      std::cout << "Oops..Invalid action!" << std::endl;
+      if (action != 'w') std::cout << "Oops..Invalid action!" << std::endl;
     }
   }
 
@@ -778,3 +789,17 @@ void reinsert_flags (Game &game , std::vector <std::pair<int,int>> posicoes)
   }
 }
 
+// hack para revelar todas as células sem minas
+void win_game ( Game &game )
+{
+  for ( int i = 0 ; i < game.map.height ; i++)
+  {
+    for ( int j = 0 ; j < game.map.width ; j++ )
+    {
+      if ( game.map.cells[i][j].has_mine == false )
+      {
+        game.map.cells[i][j].is_hidden = false;
+      }
+    }
+  }
+}
