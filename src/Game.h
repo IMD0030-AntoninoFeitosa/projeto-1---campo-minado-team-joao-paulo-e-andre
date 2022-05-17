@@ -61,4 +61,10 @@ void fill_with_mines_intermediary(Map &map, int total_mines, int x, int y);
 // preencher com minas nível avançado
 void fill_with_mines_advanced(Map &map, int total_mines, int x, int y);
 
+// posição das flags antes do primeiro reveal
+std::vector <std::pair<int,int>> pos_flags_before_first_reveal (Map map);
+
+// repor flags após primeiro reveal
+void reinsert_flags (Game &game , std::vector <std::pair<int,int>> posicoes);
+
 #endif

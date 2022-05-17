@@ -17,6 +17,7 @@ void show_usage()
   std::cout << "Usage: game [option]" << std::endl;
   std::cout << "Option:" << std::endl;
   std::cout << " -h or --help                  Display this information." << std::endl;
+  std::cout << " -r or --records               Display records." << std::endl;
   std::cout << " -d or --difficulty <option>   Change the game difficulty for <option>" << std::endl;
   std::cout << "                               -b or --beginner" << std::endl;
   std::cout << "                               -i or --intermediary" << std::endl;
@@ -250,6 +251,11 @@ void reveal_all_map(Map &map)
     for (int w = 0; w < map.width; w++)
     {
       map.cells[h][w].is_hidden = false;
+      
+      if (map.cells[h][w].has_flag == true && map.cells[h][w].has_mine == true)
+      {
+        map.cells[h][w].has_flag = false;
+      }
     }
   }
 }
@@ -322,41 +328,52 @@ bool play(Difficulty level)
 
       if (action == 'r')
       {
-        // cria mapa novo baseado nas restricoes de primeira jogada (intermediário e avançado)
-        if (jogada == 0 && (game.level == Difficulty::intermediary || game.level == Difficulty::advanced))
+        if (game.map.cells[y][x].has_flag == false)
         {
-          game.map = create_map(game.map.height, game.map.width, game.total_mines, x, y);
-          jogada++;
-        }
+          // cria mapa novo baseado nas restricoes de primeira jogada (intermediário e avançado)
+          if (jogada == 0 && (game.level == Difficulty::intermediary || game.level == Difficulty::advanced))
+          {
+            std::vector <std::pair<int,int>> pos_flags = pos_flags_before_first_reveal ( game.map );
 
-        if (has_mine(game.map, x, y))
-        { 
-          reveal_all_map(game.map);
-          show_map(game.map);
-          std::cout << std::endl << "Time: " << time(NULL) - tempo_1 << " seconds :(" << std::endl;
-          won = false;
-          end = true;
-        }
+            game.map = create_map(game.map.height, game.map.width, game.total_mines, x, y);
+            jogada++;
 
-        else
-        {
-          // caso seja encontrada um numero, eh exibida celula
-          if (count_nested_mines(game.map, x, y) > 0)
-          {
-            game.map.cells[y][x].is_hidden = false;
+            reinsert_flags ( game , pos_flags);
           }
-          else
-          {
-            //revelar células vizinhas
-            revelar(game, x, y);
-          }
-          // ao fim, checa se usuario venceu.
-          won = check_user_won(game.map);
-          // Se sim, encerra o programa. Senao, continua o fluxo
-          if (won)
-          {
+
+          if (has_mine(game.map, x, y))
+          { 
+            reveal_all_map(game.map);
+            show_map(game.map);
+            std::cout << std::endl << "Time: " << time(NULL) - tempo_1 << " seconds :(" << std::endl;
+            won = false;
             end = true;
           }
+
+          else
+          {
+            // caso seja encontrada um numero, eh exibida celula
+            if (count_nested_mines(game.map, x, y) > 0)
+            {
+              game.map.cells[y][x].is_hidden = false;
+            }
+            else
+            {
+              //revelar células vizinhas
+              revelar(game, x, y);
+            }
+            // ao fim, checa se usuario venceu.
+            won = check_user_won(game.map);
+            // Se sim, encerra o programa. Senao, continua o fluxo
+            if (won)
+            {
+              end = true;
+            }
+          }
+        }
+        else
+        {
+          std::cout << std::endl <<"WARNING: Cell with flag! To show cell, take off flag first." << std::endl;
         }
       }
 
@@ -676,7 +693,7 @@ void fill_with_mines_intermediary(Map &map, int total_mines, int x, int y)
 // *** preencher com minas nível avançado ***
 void fill_with_mines_advanced(Map &map, int total_mines, int x, int y)
 {
-  std::vector<std::pair<int, int>> positions_a;
+  std::vector<std::pair<int, int>> positions;
 
   for (int j = -1; j <= 1; j++)
   {
@@ -687,7 +704,7 @@ void fill_with_mines_advanced(Map &map, int total_mines, int x, int y)
 
       if (is_inside_map(map, dx , dy))
       {
-        positions_a.push_back({dy,dx});
+        positions.push_back({dy,dx});
       }
     }
   }
@@ -709,9 +726,9 @@ void fill_with_mines_advanced(Map &map, int total_mines, int x, int y)
 
     if (cont_posicoes == 0)
     {
-      for (int i = 0 ; i < positions_a.size() ; i++ )
+      for (int i = 0 ; i < positions.size() ; i++ )
       {
-        if (( x != w && y != h ) && ( positions_a[i].first == h && positions_a[i].second == w ))
+        if (( x != w && y != h ) && ( positions[i].first == h && positions[i].second == w ))
         {
           map.cells[h][w].has_mine = true;
           cont_posicoes++;
@@ -725,6 +742,39 @@ void fill_with_mines_advanced(Map &map, int total_mines, int x, int y)
       map.cells[h][w].has_mine = true;
       count_mines++;
     }    
+  }
+}
+
+// posição das flags antes do primeiro reveal
+std::vector <std::pair<int,int>> pos_flags_before_first_reveal (Map map)
+{
+  std::vector<std::pair<int, int>> posicoes;
+
+  for ( int i = 0 ; i < map.height ; i++ )
+  {
+    for ( int j = 0 ; j < map.width ; j++ )
+    {
+      if ( map.cells[i][j].has_flag == true)
+      {
+        posicoes.push_back({i,j});
+      }
+    }
+  }
+  return posicoes;
+}
+
+// repor flags após primeiro reveal
+void reinsert_flags (Game &game , std::vector <std::pair<int,int>> posicoes)
+{
+
+  for ( int i = 0 ; i < posicoes.size() ; i++ )
+  {
+    int first = posicoes[i].first;
+    int second = posicoes[i].second;
+
+    game.map.cells[first][second].has_flag = true;
+    game.map.cells[first][second].is_hidden = false;
+
   }
 }
 

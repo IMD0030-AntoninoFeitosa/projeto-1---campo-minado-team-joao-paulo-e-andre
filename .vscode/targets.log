@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon May 16 13:39:25 2022
+# Make data base, printed on Mon May 16 19:48:35 2022
 
 # Variables
 
@@ -21,7 +21,7 @@ USERPROFILE = C:\Users\arqan
 # environment
 LOCALAPPDATA = C:\Users\arqan\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-ba1a05b4-ae6a-4f72-868c-0d984597914d-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-93095e93-e288-44a2-ae33-d88bfa9c793d-sock
 # environment
 WSLENV = WT_SESSION::WT_PROFILE_ID
 # environment
@@ -39,7 +39,7 @@ MAKE_COMMAND := C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_10464_LAAHRVLJYNEVIEXR
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_1084_AVXBYUXZXAUKZWHC
 # environment
 ONEDRIVECOMMERCIAL = D:\OneDrive - ufrn.edu.br
 # environment
@@ -95,7 +95,7 @@ MAKEFILE_LIST := Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 10464
+VSCODE_PID = 1084
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # environment
@@ -141,7 +141,7 @@ PROMPT = $P$G
 # environment
 CHOCOLATEYLASTPATHUPDATE = 132969218504219710
 # environment
-WT_SESSION = 28ae44e5-1161-4740-8bd6-23777fd6b41d
+WT_SESSION = a833549b-c142-4620-9b03-59e141ea48c5
 # environment
 LOGONSERVER = \\LAPTOP-ODUHE9LH
 # environment
@@ -213,8 +213,8 @@ VSCODE_CLI = 1
 # environment
 ELECTRON_NO_ATTACH_CONSOLE = 1
 # default
-.FEATURES := target-specific order-only  
-second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync load
+.FEATURES := target-specific order-only se 
+cond-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync load
 # environment
 PROCESSOR_REVISION = 9e09
 # environment
@@ -314,6 +314,6 @@ main:
 # strcache performance: lookups = 34 / hit rate = 47%
 # hash-table stats:
 # Load=18/8192=0%, Rehash=0, Collisions=0/34=0%
-# Finished Make data base on Mon May 16 13:39:25 2022
+# Finished Make data base on Mon May 16 19:48:35 2022
 
  
