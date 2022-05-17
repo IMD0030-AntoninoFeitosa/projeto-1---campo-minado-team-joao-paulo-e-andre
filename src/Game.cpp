@@ -11,6 +11,8 @@
 #include "Game.h"
 #include "utils/string.cpp"
 
+const int NUM_RECORDS = 10;
+
 // explica como usar comandos do jogo
 void show_usage()
 {
@@ -503,7 +505,9 @@ void show_records()
     file.close();
     players.shrink_to_fit();
     sort(players);
-    for (int i = 0; i < players.size(); i++)
+
+    //for (int i = 0; i < players.size(); i++)
+    for (int i = 0; i < NUM_RECORDS ; i++)
     {
       std::cout << std::setfill('0') << std::setw(2) << i + 1 << ": ";
       std::cout << players[i][0] << " - " << players[i][1] << " seconds." << std::endl;

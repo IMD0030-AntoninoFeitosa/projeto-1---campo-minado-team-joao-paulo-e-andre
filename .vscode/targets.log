@@ -8,12 +8,10 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue May 17 13:18:07 2022
+# Make data base, printed on Tue May 17 14:25:02 2022
 
 # Variables
 
-# environment
-FPS_BROWSER_APP_PROFILE_STRING = Internet Explorer
 # environment
 SYSTEMDRIVE = C:
 # environment
@@ -23,9 +21,11 @@ USERPROFILE = C:\Users\arqan
 # environment
 LOCALAPPDATA = C:\Users\arqan\AppData\Local
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-867d83a0-4912-4961-8a3e-b8dd561b7468-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-d80e6607-6262-42f5-84b0-cc0f4214ed6d-sock
 # environment
-VSCODE_CWD = C:\Users\arqan\AppData\Local\Programs\Microsoft VS Code
+WSLENV = WT_SESSION::WT_PROFILE_ID
+# environment
+VSCODE_CWD = C:\Users\arqan\OneDrive\�rea de Trabalho\GIT\projeto-1---campo-minado-team-joao-paulo-e-andre
 # environment
 CHOCOLATEYINSTALL = C:\ProgramData\chocolatey
 # environment
@@ -33,17 +33,15 @@ SYSTEMROOT = C:\WINDOWS
 # environment
 PROCESSOR_LEVEL = 6
 # environment
-PSMODULEPATH = C:\Program Files\WindowsPowerShell\Modules;C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\PowerShell\Modules\
+PSMODULEPATH = C:\Users\arqan\OneDrive\Documentos\WindowsPowerShell\Modules;C:\Program Files\WindowsPowerShell\Modules;C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\PowerShell\Modules\
 # default
 MAKE_COMMAND := C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_13848_YYXAERLNKRYJAQNC
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_18060_KDLJABWUGZJIVYSK
 # environment
 ONEDRIVECOMMERCIAL = D:\OneDrive - ufrn.edu.br
-# environment
-FPS_BROWSER_USER_PROFILE_STRING = Default
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
@@ -97,9 +95,11 @@ MAKEFILE_LIST := Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 13848
+VSCODE_PID = 18060
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
+# environment
+WT_PROFILE_ID = {61c54bbd-c2c6-5271-96e7-009a87ff44bf}
 # automatic
 *F = $(notdir $*)
 # automatic
@@ -129,7 +129,7 @@ MAKELEVEL := 0
 # default
 MAKE = $(MAKE_COMMAND)
 # environment
-PATH = C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\arqan\AppData\Local\Programs\Python\Python38\Scripts;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files\CMake\bin;C:\Program Files\Git\cmd;C:\ProgramData\chocolatey\bin;C:\Users\arqan\AppData\Local\Programs\Python\Python38;C:\MinGW\bin;C:\Users\arqan\AppData\Local\GitHubDesktop\bin;C:\Users\arqan\AppData\Local\Programs\Microsoft VS Code\bin;C:\msys64\mingw64\bin;
+PATH = C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\arqan\AppData\Local\Programs\Python\Python38\Scripts;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files\CMake\bin;C:\Program Files\Git\cmd;C:\ProgramData\chocolatey\bin;C:\Users\arqan\AppData\Local\Programs\Python\Python38;C:\MinGW\bin;C:\Users\arqan\AppData\Local\GitHubDesktop\bin;C:\Users\arqan\AppData\Local\Programs\Microsoft VS Code\bin;C:\msys64\mingw64\bin
 # environment
 COMPUTERNAME = LAPTOP-ODUHE9LH
 # default
@@ -140,6 +140,8 @@ MAKEFILES :=
 PROMPT = $P$G
 # environment
 CHOCOLATEYLASTPATHUPDATE = 132969218504219710
+# environment
+WT_SESSION = e85ef5e1-2aa6-4c5d-9f2c-0f3e3adddb86
 # environment
 LOGONSERVER = \\LAPTOP-ODUHE9LH
 # environment
@@ -155,7 +157,7 @@ ADSK_CLM_WPAD_PROXY_CHECK = FALSE
 # environment
 PROGRAMW6432 = C:\Program Files
 # environment
-PATHEXT = .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC
+PATHEXT = .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.CPL
 # automatic
 +F = $(notdir $+)
 # environment
@@ -171,7 +173,8 @@ OS = Windows_NT
 # default
 MAKE_VERSION := 4.3
 # environment
-PROGRAMFILES(X86) = C:\Program Files (x86)
+PROGRAMFI 
+LES(X86) = C:\Program Files (x86)
 # environment
 USERDOMAIN_ROAMINGPROFILE = LAPTOP-ODUHE9LH
 # environment
@@ -207,7 +210,9 @@ SUFFIXES :=
 # environment
 ALLUSERSPROFILE = C:\ProgramData
 # environment
-SESSIONNAME = Console
+VSCODE_CLI = 1
+# environment
+ELECTRON_NO_ATTACH_CONSOLE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync load
 # environment
@@ -215,7 +220,7 @@ PROCESSOR_REVISION = 9e09
 # environment
 PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 158 Stepping 9, GenuineIntel
 # variable set hash-table stats:
-# Load=101/1024=10%, Rehash=0, Collisions=10/128=8%
+# Load=103/1024=10%, Rehash=0, Collisions=11/130=8%
 
 # Pattern-specific Variable Values
 
@@ -234,8 +239,7 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 158 Stepping 9, GenuineIntel
 # Files
 
 dist:
-#  Implicit rule  
-search has not been done.
+#  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 7):
@@ -310,6 +314,6 @@ main:
 # strcache performance: lookups = 34 / hit rate = 47%
 # hash-table stats:
 # Load=18/8192=0%, Rehash=0, Collisions=0/34=0%
-# Finished Make data base on Tue May 17 13:18:07 2022
+# Finished Make data base on Tue May 17 14:25:02 2022
 
  
